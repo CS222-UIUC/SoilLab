@@ -9,7 +9,7 @@ import Dashboard from "./Dashboard";
 function App() {
   return (
     <div className="app">
-      <header className="App-Header">
+      <header className="header">
         <h1>SoilLab</h1>
         <script src="https://kit.fontawesome.com/1bee948766.js" crossOrigin="anonymous"></script>
       </header>
