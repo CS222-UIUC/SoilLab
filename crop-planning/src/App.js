@@ -10,7 +10,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>Crop Planning</h1>
+        <h1>Crop Planner</h1>
         <script src="https://kit.fontawesome.com/1bee948766.js" crossOrigin="anonymous"></script>
 
       </header>
