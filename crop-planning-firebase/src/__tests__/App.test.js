@@ -16,6 +16,12 @@ import {BrowserRouter, MemoryRouter} from 'react-router-dom'
 
 test('Page loads properly & shows correct landing screen', () => {
   render(<App/>);
-  const headerElement = screen.getByText('SoilLab');
+  const headerElement = screen.getByText('Welcome to');
   expect(headerElement).toBeInTheDocument();
+});
+
+test('Page shows app description', () => {
+  render(<App/>);
+  const pageDescript = screen.getByText('Get help with your crop planning!');
+  expect(pageDescript).toBeInTheDocument();
 });
