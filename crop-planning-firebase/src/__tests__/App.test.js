@@ -20,6 +20,7 @@ test('Page loads properly & shows correct landing screen', () => {
   expect(headerElement).toBeInTheDocument();
 });
 
+
 test('Page shows app description', () => {
   render(<App/>);
   const pageDescript = screen.getByText('Get help with your crop planning!');
