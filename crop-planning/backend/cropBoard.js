@@ -12,7 +12,10 @@ class CropBoard {
         for (var i = 0; i < height; i++) {
             this.board[i] = new Array(width).fill(0);
         }
-        console.log(this.board);
+        
+        // storing the number representing certain crop type: {"CropName": CropNumber}
+        this.crop_dict = {};
+        this.crop_type_number = 0;
     }
 
     visualization() {
@@ -45,30 +48,30 @@ class CropBoard {
             }
         }
 
-        for (var i = x - crop.attributes.radius; i < x + crop.attributes.radius; i++) {
-            for (var j = y - crop.attributes.radius; j < y + crop.attributes.radius; j++) {
-                this.board[i][j] = 1;
+        if (!(crop.name in this.crop_dict)) {
+            this.crop_dict[crop.name] = this.crop_type_number + 1;
+            this.crop_type_number++;
+        }
+
+        for (var i = x - crop.attributes.radius; i <= x + crop.attributes.radius; i++) {
+            for (var j = y - crop.attributes.radius; j <= y + crop.attributes.radius; j++) {
+                this.board[i][j] = this.crop_dict[crop.name];
             }
         }
 
         return true;
     }
 
-    /*
-    semicircle_width(r) {
-        // r is the radius of this semicircle
-        if (r < 1) {
-            throw "invalid radius";
+    clear() {
+        for (var i = 0; i < this.height; i++) {
+            for (var j = 1; j < this.width; j++) {
+                this.board[i][j] = 0;
+            }
         }
-        let semicircle = new Array(r);
-        semicircle[0] = r;
-        for (var i = 1; i < r; i++) {
-            semicircle[i] = Math.round(r * Math.cos(2 * Math.atan(i / r)));
-        }
-        console.log(semicircle)
-        return semicircle;
+        this.crop_type_number = 0;
+        this.crop_dict = {};
+        console.log("crop board cleared");
     }
-    */
 }
 
 export {CropBoard};

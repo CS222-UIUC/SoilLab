@@ -25,7 +25,7 @@ class Crop extends CropModel {
 
     // returns a boolean value on whether the sunlight intensity is appropriate for this crop
     check_light_intensity(intensity) {
-        return (intensity <= this.attributes.higherLightLimit) && (intensity >= this.attributes.lowerLightLimit);
+        return (intensity <= this.attributes.higherSunLightHour) && (intensity >= this.attributes.lowerSunLightHour);
     }
 }
 

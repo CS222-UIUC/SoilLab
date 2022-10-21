@@ -5,25 +5,19 @@ attributes: a dictionary.
 what an dictionary input should look like:
 {
     LowerTemperatureLimit: (float, unit in Farenheit), higherTemperatureLimit: (float, unit in Farenheit),
-    LowerIrrigationLimit: (float, unit in mL), HigherIrrigationLimit: (float, unit in mL),
-    LowerLightLimit: (float, unit in cd), HigherLightLimit: (float, unit in cd)],
+    LowerIrrigationLimit: (float, unit in cm), HigherIrrigationLimit: (float, unit in cm), (these are the depth of water per week)
+    LowerSunLightHour: (float, unit in hour), 
     Radius(unit in cm, radius of the area needed for growth): (float)
     (can add more)
 }
 
 a sample attributes dictionary input:
 
-{
-    TemperatureRange: [59.0, 77.0],
-    IrrigationRange: [20.0, 100.0],
-    LightIntensityRange: [1500.0, 1800.0],
-    Radius: 20.0
-}
 
 {
     LowerTemperatureLimit: 59.0, higherTemperatureLimit: 77.0,
     LowerIrrigationLimit: 20.0, HigherIrrigationLimit: 100.0,
-    LowerLightLimit: 1500.0, HigherLightLimit: 1800.0,
+    LowerSunLightHour: 1500.0,
     Radius(unit in cm, radius of the area needed for growth): 20.0
     ** the area needed for the plant is a square, the side length of the square is 2 * radius + 1
     (can add more)
@@ -37,8 +31,7 @@ class CropAttrs {
         this.higherTemperatureLimit = attributes.higherTemperatureLimit;
         this.lowerIrrigationLimit = attributes.LowerIrrigationLimit;
         this.higherIrrigationLimit = attributes.HigherIrrigationLimit;
-        this.lowerLightLimit = attributes.LowerLightLimit;
-        this.higherLightLimit = attributes.HigherLightLimit;
+        this.lowerSunLightHour = attributes.LowerSunLightHour; 
         this.radius = attributes.Radius;
     }
 }
