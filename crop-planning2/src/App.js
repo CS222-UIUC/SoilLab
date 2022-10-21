@@ -37,7 +37,7 @@ export const Grid = () => {
         <GridItemWrapper key="Carrot" data-testid="Carrot">
           <div>
             <div onMouseOver={handleMouseOver} onMouseOut={handleMouseOut}>Carrot</div>
-            {!isHovering && <img src="https://static.thenounproject.com/attribution/1211981-600.png" alt = "corn" width="95" height="95"/>}
+            {!isHovering && <img src="https://static.thenounproject.com/attribution/1211981-600.png" alt = "carrot" width="95" height="95"/>}
             {isHovering && <h2>This vegetable is orange.</h2>}
           </div>
         </GridItemWrapper>
@@ -51,21 +51,21 @@ export const Grid = () => {
         <GridItemWrapper key="Soybean" data-testid="Soybean">
           <div>
             <div onMouseOver={handleMouseOver} onMouseOut={handleMouseOut}>Soybean</div>
-            {!isHovering && <img src="https://static.thenounproject.com/attribution/5164867-600.png" alt = "corn" width="95" height="95"/>}
+            {!isHovering && <img src="https://static.thenounproject.com/attribution/5164867-600.png" alt = "soybean" width="95" height="95"/>}
             {isHovering && <h2>I have no clue what color this legume is. Tan?</h2>}
           </div>
         </GridItemWrapper>
         <GridItemWrapper key="Cabbage" data-testid="Cabbage">
           <div>
             <div onMouseOver={handleMouseOver} onMouseOut={handleMouseOut}>Cabbage</div>
-            {!isHovering && <img src="https://static.thenounproject.com/attribution/1482111-600.png" alt = "corn" width="95" height="95"/>}
+            {!isHovering && <img src="https://static.thenounproject.com/attribution/1482111-600.png" alt = "cabbage" width="95" height="95"/>}
             {isHovering && <h2>This vegetable is green.</h2>}
           </div>
         </GridItemWrapper>
         <GridItemWrapper key = "Rice" data-testid="Rice">
           <div>
             <div onMouseOver={handleMouseOver} onMouseOut={handleMouseOut}>Rice</div>
-            {!isHovering && <img src="https://static.thenounproject.com/attribution/56585-600.png" alt = "corn" width="95" height="95"/>}
+            {!isHovering && <img src="https://static.thenounproject.com/attribution/56585-600.png" alt = "rice" width="95" height="95"/>}
             {isHovering && <h2>This grain is brown.</h2>}
           </div>
         </GridItemWrapper>
