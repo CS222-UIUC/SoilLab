@@ -9,7 +9,25 @@
 }
 
 .login__container {
+  position:relative;
   display: flex;
+  flex-direction: column;
+  text-align: center;
+  padding: 30px;
+  background-color: #CFF09E;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -o-border-radius: 10px;
+  -ms-border-radius: 10px;
+  border-radius: 10px;
+}
+
+.bottom__container {
+  position:absolute;
+  display: flex;
+  width:500px;
+  height: 10px;
+  bottom:570px;
   flex-direction: column;
   text-align: center;
   padding: 30px;

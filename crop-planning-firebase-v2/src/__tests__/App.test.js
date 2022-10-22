@@ -14,6 +14,12 @@ test('Page loads properly & shows correct landing screen', () => {
   expect(headerElement).toBeInTheDocument();
 });
 
+test('Shows bar with about link', () => {
+  render(<App/>);
+  const headerElement = screen.getByText('About');
+  expect(headerElement).toBeInTheDocument();
+});
+
 test('Test change URL', () => {
   global.window = { location: { pathname: null } };
   expect(global.window.location.pathname).toEqual('/');
