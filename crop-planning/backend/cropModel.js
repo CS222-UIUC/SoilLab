@@ -40,7 +40,7 @@ class CropModel {
     name = "Crop";
     description = "N/A";
 
-    constructor (name, description, attributes) {
+    constructor (name, description, attributes, bn) {
         this.name = name;
         this.description = description;
         this.attributes = new CropAttrs(attributes);

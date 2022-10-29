@@ -1,5 +1,12 @@
 import {CropModel, CropAttrs} from './cropModel';
 
+/*
+
+References:
+https://www.almanac.com/plant/
+
+*/
+
 let CornAttributes = {
     LowerTemperatureLimit: 60.0, higherTemperatureLimit: 95.0,
     LowerIrrigationLimit: 2.0, HigherIrrigationLimit: 4.0,
@@ -28,7 +35,7 @@ let LettuceAttributes = {
     Radius: 13
 }
 
-const CornModel = new CropModel("Corn", "Wow", CornAttributes);
+const CornModel = new CropModel("Corn", "Wow", CornAttributes, );
 const TomatoModel = new CropModel("Tomato", "Wow", TomatoAttributes);
 const CarrotModel = new CropModel("Carrot", "Wow", CarrotAttributes);
 const LettuceModel = new CropModel("Lettuce", "Wow", LettuceAttributes);

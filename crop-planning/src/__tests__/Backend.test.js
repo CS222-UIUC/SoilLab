@@ -43,6 +43,9 @@ test('test CropBoard', () => {
   board.add_crop(CropModels.Carrot, 10, 20);
   board.add_crop(CropModels.Corn, 20, 20);
   board.visualization();
+  let r = board.check_adjacent();
+  console.log(r);
+
   board.clear();
 
   let is_empty = true;
