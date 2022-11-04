@@ -3,7 +3,7 @@ import { Crop } from "./crop";
 import { CropModel } from "./cropModel";
 
 // actually Carrot and Corn can be planted together, this is just for testing
-let bad_neighbors = { "Corn": ["Tomato"] , "Tomato": ["Corn"], "Carrot": ["Celery", "Parsnip"], "Lettuce": ["Garlic"] };
+let bad_neighbors = { "Corn": ["Tomato", "Carrot"] , "Tomato": ["Corn"], "Carrot": ["Celery", "Parsnip", "Corn"], "Lettuce": ["Garlic"] };
 class CropBoard {
     constructor (width, height) {
         if (width < 1 || height < 1) {
@@ -63,6 +63,7 @@ class CropBoard {
             }
         }
         this.crops.push(new_crop);
+        console.log(this.crops);
         return true;
     }
 
@@ -77,25 +78,158 @@ class CropBoard {
         console.log("crop board cleared");
     }
 
+    suggestion() {
+        let problems = {
+            /* will add more attributes once the weather data is organized into a class or inside CropBoard */
+            BadNeigborPairs: this.check_adjacent(),
+        };
+        return problems;
+    }
+
+    /* function to check temperature for all the crops in the board */
+    check_temperature(temp) {
+        // an array of Crop that won't grow well in this temperature
+        console.log("running check_temperature");
+        let temp_inappropriate = [];
+
+        if (Array.isArray(temp)) {
+            if (temp.length == 2) {
+                // the array is in format [a, b], which means the upper and lower range of temperature
+
+                for (var i = 0; i < this.crops.length; i++) {
+                    if (!(this.crops[i].check_temperature(temp[0]) && this.crops[i].check_temperature(temp[1]))) {
+                        temp_inappropriate.push(this.crops[i]);
+                    }
+                }
+            } else {
+                /* the array is an array of multiple temperatures, 
+                check if all these temperatures are good temperatures
+                */
+                for (var i = 0; i < this.crops.length; i++) {
+                    for (var j = 0; j < temp.length; j++) {
+                        if (!(this.crops[i].check_temperature(temp[j]))) {
+                            temp_inappropriate.push(this.crops[i]);
+                            break;
+                        }
+                    }
+                }
+            }
+
+        } else {
+            /* there is only one single  temperature */
+
+            for (var i = 0; i < this.crops.length; i++) {
+                if (!(this.crops[i].check_temperature(temp))) {
+                    temp_inappropriate.push(this.crops[i]);
+                }
+            }
+
+        }
+        return temp_inappropriate;
+    }
+
+    /* function to check irrigation for all the crops in the board */
+    check_irrigation(depth) {
+        // an array of Crop that won't grow well in this irrigation amount
+        console.log("running check_irrigation");
+        let irri_inappropriate = [];
+
+        if (Array.isArray(depth)) {
+            if (depth.length == 2) {
+                // the array is in format [a, b], which means the upper and lower range of irrigation(depth)
+
+                for (var i = 0; i < this.crops.length; i++) {
+                    if (!(this.crops[i].check_irrigation(depth[0]) && this.crops[i].check_irrigation(depth[1]))) {
+                        irri_inappropriate.push(this.crops[i]);
+                    }
+                }
+            } else {
+                /* the array is an array of multiple irrigation(depth), 
+                check if all these irrigation(depth) amount are good
+                */
+                for (var i = 0; i < this.crops.length; i++) {
+                    for (var j = 0; j < depth.length; j++) {
+                        if (!(this.crops[i].check_irrigation(depth[j]))) {
+                            irri_inappropriate.push(this.crops[i]);
+                            break;
+                        }
+                    }
+                }
+            }
+
+        } else {
+            /* there is only one single irrigation value */
+
+            for (var i = 0; i < this.crops.length; i++) {
+                if (!(this.crops[i].check_irrigation(depth))) {
+                    irri_inappropriate.push(this.crops[i]);
+                }
+            }
+
+        }
+        return irri_inappropriate;
+    }
+
+    /* function to check sunlight hours for all the crops in the board */
+    check_sunlight(hour) {
+        console.log("running check_sunlight");
+        // an array of Crop that won't grow well in this number of sunlight hour
+        let light_inappropriate = [];
+
+        if (Array.isArray(hour)) {
+            /* the array is an array of multiple sunlight hours, 
+            check if all these sunlight hour amount are good
+            */
+            for (var i = 0; i < this.crops.length; i++) {
+                for (var j = 0; j < hour.length; j++) {
+                    if (!(this.crops[i].check_sunlight(hour[j]))) {
+                        light_inappropriate.push(this.crops[i]);
+                        break;
+                    }
+                }
+            }
+
+        } else {
+            /* there is only one single sunlight hour value */
+
+            for (var i = 0; i < this.crops.length; i++) {
+                if (!(this.crops[i].check_sunlight(hour))) {
+                    light_inappropriate.push(this.crops[i]);
+                }
+            }
+
+        }
+        return light_inappropriate;
+    }
+
     check_adjacent() {
         let bad_adjacent = []
-        console.log("check_adjacent")
-        // console.log(this.crops);
-        // let boardCopy = JSON.parse(JSON.stringify(this.board));
+        let bad_coord_set = new Set();
+        console.log("running check_adjacent");
+        
         for (var i = 0; i < this.crops.length; i++) {
             let crop1 = this.crops[i];
-            // console.log(crop1);
             for (var j = 0; j < this.crops.length; j++) {
                 let crop2 = this.crops[j];
                 if (!this.check_good_neighbor(crop1, crop2) && this.is_adjacent(crop1, crop2)) {
-                    bad_adjacent.push([crop1, crop2]);
+                    let alter_coord_list = String([crop2.xcoord, crop2.ycoord, crop1.xcoord, crop1.ycoord]);
+                    if (!bad_coord_set.has(alter_coord_list)) {
+                        bad_coord_set.add(String([crop1.xcoord, crop1.ycoord, crop2.xcoord, crop2.ycoord]));
+                        bad_adjacent.push([crop1, crop2]);
+                    }
                 }
             }
         }
-        // console.log(bad_adjacent);
+        
         return bad_adjacent;
     }
 
+    /* 
+
+    Helper function of check_adjacent 
+    Check whether two crops can be grown next to each other
+
+    */
     check_good_neighbor(crop1, crop2) {
 
         if (crop1.get_name() == crop2.get_name()) return true;
@@ -109,14 +243,26 @@ class CropBoard {
         return true;
     }
 
+    /* 
+
+    Helper function of check_adjacent 
+    Check whether two crops are adjacent
+    Defined by the distance between center points & the radiuses
+
+    */
     is_adjacent(crop1, crop2) {
-        let min_distance_sqaure = 2 * Math.pow(crop1.radius + crop2.radius, 2);
+        let min_distance_sqaure = 2 * Math.pow(crop1.attributes.radius + crop2.attributes.radius, 2);
         let actual_distance_square = Math.pow(crop1.xcoord - crop2.xcoord, 2) + Math.pow(crop1.ycoord - crop2.ycoord, 2);
-        console.log(min_distance_sqaure, actual_distance_square);
         if (min_distance_sqaure > actual_distance_square) return true;
         return false;
     }
 
+    /* 
+
+    Helper function of check_adjacent 
+    Check whether the two crops are the same crop
+
+    */
     crops_equal(crop1, crop2) {
         if (crop1.name === crop2.name && crop1.xcoord == crop2.xcoord && crop1.ycoord == crop2.ycoord)
             return true;
