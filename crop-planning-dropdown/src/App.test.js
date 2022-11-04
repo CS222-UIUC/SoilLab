@@ -11,3 +11,13 @@ test('Renders entire form (all fields + submit button)', async() => {
   expect(screen.getByText('Temperature Range')).toBeInTheDocument();
   expect(screen.getByText('Submit')).toBeInTheDocument();
 });
+
+test('Renders geolocation button)', async() => {
+  render(<App />);
+
+  expect(screen.getByText("Get Location")).toBeInTheDocument();
+
+  const button = screen.getByRole('button', {name: 'Get Location'});
+  fireEvent.click(button);
+  expect(screen.getByText('Geolocation is not supported by your browser')).toBeInTheDocument();
+});
