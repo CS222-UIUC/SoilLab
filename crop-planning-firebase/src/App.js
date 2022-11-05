@@ -6,12 +6,15 @@ import Home from "./Home";
 import Register from "./Register";
 import Reset from "./Reset";
 import Dashboard from "./Dashboard";
+import Navbar from "./components/Navbar/Navbar"
+import Footer from "./components/Footer/Footer";
 
 function App() {
   return (
     <div className="app">
       <header className="App-Header">
-        <h1>SoilLab</h1>
+        {/* <h1>SoilLab</h1> */}
+        <Navbar />
         <script src="https://kit.fontawesome.com/1bee948766.js" crossOrigin="anonymous"></script>
       </header>
       <Router>
@@ -23,6 +26,7 @@ function App() {
           <Route exact path="/dashboard" element={<Dashboard />} />
         </Routes>
       </Router>
+      <Footer />
     </div>
   );
 }
