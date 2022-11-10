@@ -2,6 +2,7 @@ import './App.css';
 import React, { useState } from 'react';
 import { Formik, Form, useField } from 'formik';
 import './App-custom.css';
+// import axios from 'axios';
 
 const MyTextInput = ({ label, ...props }) => {
   const [field, meta] = useField(props);
@@ -64,24 +65,38 @@ function App() {
   const [lat, setLat] = useState(null);
   const [lng, setLng] = useState(null);
   const [status, setStatus] = useState(null);
+  // const [responseData, setResponseData] = useState({});
+
+  // const API_endpoint = `https://api.openweathermap.org/data/2.5/weather?`;
+
+  // const API_key = `456f9a99a8bea190d9b9d369a400a84b`;
+
+  // axios.get(`${API_endpoint}lat=${lat}&lon=${lng}&appid=${API_key}`)
+  // .then((response) => {
+  //   setResponseData(response.data)
+  // })
+
+  // const location_data = responseData.name + ", " + responseData.country;
+  const lat_long_data = lat + ", " + lng;
 
   return (
     <>
       <h1>Before you start planning...</h1>
       <h3>Please enter your information below so we can give you the best recommendations possible!</h3>
 
-      <br></br>
+      {/* <br></br>
       <button onClick={getLocation}>Get Location</button>
       <p>{status}</p>
       {lat && <p>Latitude: {lat}</p>}
-      {lng && <p>Longitude: {lng}</p>}
+      {lng && <p>Longitude: {lng}</p>} */}
 
-      <Formik
+      <Formik enableReinitialize
         initialValues={{
           location: '',
           temperature: '', // select
           acceptedTerms: false, // checkbox
-        }}
+        }
+      }
 
         onSubmit={(values, { setSubmitting }) => {
           setTimeout(() => {
@@ -96,8 +111,14 @@ function App() {
             label="Location"
             name="location"
             type="text"
-            placeholder="Champaign, IL, USA"
+            placeholder="Raleigh, USA"
+            value={lat_long_data}
+            // value={location_data}
           />
+
+          <button type="button" onClick={getLocation}>Get Location</button>
+          <p>{status}</p>
+          
 
           <MySelect label="Temperature Range" name="temperature">
             <option value="">Select the range that most closely matches your weather</option>
