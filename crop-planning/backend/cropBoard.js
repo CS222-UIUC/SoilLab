@@ -78,9 +78,12 @@ class CropBoard {
         console.log("crop board cleared");
     }
 
-    suggestion() {
+    suggestion(weather) {
         let problems = {
             /* will add more attributes once the weather data is organized into a class or inside CropBoard */
+            Temperature: this.check_temperature(weather.temperature),
+            Irrigation: this.check_irrigation(weather.irrigation),
+            Sunlight: this.check_sunlight(weather.sunlightHour),
             BadNeigborPairs: this.check_adjacent(),
         };
         return problems;
