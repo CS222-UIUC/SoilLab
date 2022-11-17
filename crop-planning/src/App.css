@@ -7,6 +7,20 @@
   pointer-events: none;
 }
 
+
+:root {
+  --gray-800: #2d3748;
+  --gray-700: #4a5568;
+  --gray-400: #cbd5e0;
+  --gray-200: #edf2f7;
+  --gray-100: #f7fafc;
+  --blue-500: #4299e1;
+  --white: white;
+  --text-decoration-color: var(--gray-400);
+  --text-color: var(--gray-800);
+  --focus-ring-color: var(--blue-500);
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
@@ -35,4 +49,93 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+/* Form
+––––––––––––––––––––––––––––––––– */
+label {
+  font-weight: bold;
+  display: flex;
+}
+
+input[type="email"],
+input[type="text"],
+input[type="number"],
+input[type="feedback"] {
+  background: white;
+  padding: 0.65rem 0.5rem;
+  font-size: 1rem;
+  border: 2px solid var(--gray-200);
+  background-color: var(--gray-100);
+  color: var(--gray-800);
+  border-radius: 10px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border: 2px solid var(--focus-ring-color);
+}
+
+input:invalid,
+select:invalid,
+textarea:invalid {
+  border: 2px solid #ff7d87;
+  box-shadow: none;
+}
+
+input[type="submit"],
+button {
+  padding: 0.5rem 1.25rem;
+  font-size: 1rem;
+  border-radius: 10px;
+  background-color: var(--gray-700);
+  border: 2px solid var(--gray-700);
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  display: inline-block;
+  line-height: initial;
+  transition: background-color 200ms ease-in-out, border 200ms ease-in-out,
+    transform 200ms ease-in-out;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+@media (hover: hover) {
+  input[type="submit"]:hover,
+  button:hover {
+    cursor: pointer;
+    background-color: var(--gray-800);
+  }
+}
+
+input[type="email"],
+input[type="text"],
+input[type="number"],
+input[type="feedback"],
+textarea,
+select {
+  width: 400px;
+}
+
+label {
+  margin-top: 1rem;
+}
+
+label.checkbox {
+  font-weight: normal;
+}
+
+button[type="submit"] {
+  margin-top: 1rem;
 }
