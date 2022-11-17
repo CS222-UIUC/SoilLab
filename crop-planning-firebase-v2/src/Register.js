@@ -41,7 +41,7 @@ function Register() {
           className="register__textBox"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          placeholder="E-mail Address"
+          placeholder="Email Address"
         />
         <input
           type="password"
@@ -60,7 +60,7 @@ function Register() {
           Register with Google
         </button>
 
-        <div>
+        <div className="text">
           Already have an account? <Link to="/">Login</Link> now.
         </div>
       </div>

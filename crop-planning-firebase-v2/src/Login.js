@@ -29,7 +29,7 @@ function Login() {
           className="login__textBox"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          placeholder="E-mail Address"
+          placeholder="Email Address"
         />
         <input
           type="password"
@@ -47,10 +47,10 @@ function Login() {
         <button className="login__btn login__google" onClick={signInWithGoogle}>
           Login with Google
         </button>
-        <div>
+        <div className="text">
           <Link to="/reset">Forgot Password</Link>
         </div>
-        <div>
+        <div className="text">
           Don't have an account? <Link to="/register">Register</Link> now.
         </div>
       </div>

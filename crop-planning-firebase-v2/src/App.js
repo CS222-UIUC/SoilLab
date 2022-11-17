@@ -11,9 +11,14 @@ import Navbar from "./components/Navbar/Navbar"
 function App() {
   return (
     <div className="app">
+<<<<<<< HEAD:crop-planning-firebase/src/App.js
       <header className="App-Header">
         {/* <h1>SoilLab</h1> */}
         <Navbar />
+=======
+      <header className="header">
+        <h1>SoilLab</h1>
+>>>>>>> a8926cd268dfeebc0eaae0bab3065ee894a96c3e:crop-planning-firebase-v2/src/App.js
         <script src="https://kit.fontawesome.com/1bee948766.js" crossOrigin="anonymous"></script>
       </header>
       <Router>
