@@ -2,6 +2,8 @@ import {Crop} from '../../backend/crop';
 import {CropModel, CropAttrs} from '../../backend/cropModel';
 import {CropModels} from '../../backend/cropModelLibrary';
 import {CropBoard} from '../../backend/cropBoard';
+import { Environment, EnvironmentModel } from '../../backend/cropEnvironment';
+import { ChampaignModel } from '../../backend/cropEnvironmentLibrary';
 
 test('test Crop & CropModel Classes', () => {
     let attributes = {
@@ -34,6 +36,28 @@ test('test Crop Model Library', () => {
 
 });
 
+test('Test Environment & EnvironmentModel', () => {
+  let attributes = {
+    lowTemperatureRange: 30, highTemperatureRange: 50,
+    lowSoilTemperatureRange: 20, highSoilTemperatureRange: 40,
+    avgPrecipitation: 3.9
+  }
+  var environment = new Environment(attributes);
+  var champaign = new EnvironmentModel("UIUC", "Champaign, IL", attributes);
+
+  expect(champaign.name == "UIUC");
+  expect(champaign.location == "Champaign, IL");
+  expect(champaign.attributes.lowTemperatureRange === 30);
+  console.log(champaign);
+});
+
+test('Test Environment Model Library', () => {
+
+  expect(ChampaignModel.Autumn.name == "Autumn");
+  expect(ChampaignModel.Autumn.lowSoilTemperatureRange == 58);
+
+});
+
 test('test CropBoard check_adjacent', () => {
 
   let board = new CropBoard(30,30);
@@ -51,8 +75,9 @@ test('test CropBoard check_adjacent', () => {
 
 });
 
-test('test CropBoard check_temperature', () => {
 
+
+test('test CropBoard', () => {
   let board = new CropBoard(30,30);
   board.visualization();
   //let s = board.semicircle_width(10);
