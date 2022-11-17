@@ -21,7 +21,7 @@ import {
 const Sidebar = ({children}) => {
     const menuItem =[
         {
-            path:"/accountDashboard",
+            path:"/dashboard",
             name: "Account",
             icon: <BiUserCircle/>
         }, {

@@ -1,6 +1,15 @@
-import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+import { render, screen, fireEvent, waitFor, act } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
 import App from '../App';
+import CropModelBoard from '../pages/cropModelBoard';
+import Dashboard from '../pages/dashboard/Dashboard';
+import Dropdown from '../pages/dropdown';
+import Form from '../pages/form';
+import Grid from '../pages/grid';
+
+import { useAuthState } from "../__mocks__/auth"
+
+
 
 test('renders header', () => {
   render(<App/>);
@@ -12,11 +21,7 @@ test('renders header', () => {
 });
 
 test('renders cropModelBoard components', async () => {
-  render(<App url="/cropModelBoard" />)
-
-  fireEvent.click(screen.getByText('Crops'));
-  // await userEvent.click(screen.getByText('Load Greeting'))
-
+  render(<CropModelBoard/>);
   expect(screen.getByText('Carrot')).toBeInTheDocument();
   expect(screen.getByText('Corn')).toBeInTheDocument();
   expect(screen.getByText('Soybean')).toBeInTheDocument();
@@ -25,7 +30,7 @@ test('renders cropModelBoard components', async () => {
 });
 
 test('Renders entire responsive, draggable grid', async() => {
-  render(<App url='/cropModelBoard' />);
+  await act( async () => render(<CropModelBoard/>));
 
   expect(screen.getByText('Carrot')).toBeInTheDocument();
   expect(screen.getByText('Corn')).toBeInTheDocument();
@@ -35,10 +40,8 @@ test('Renders entire responsive, draggable grid', async() => {
 });
 
 test('Check that hoverable information for each icon is not displayed until hover, and then displayed when hovered', async() => {
-  render(
-      <App url='/grid'/>
-  );
-  await fireEvent.click(screen.getByText('Grid'));
+  await act( async () => render(<Grid/>));
+  //await fireEvent.click(screen.getByText('Grid'));
   const carrot = screen.queryByText('This vegetable is orange.');
   expect(carrot).not.toBeInTheDocument();
 
@@ -77,7 +80,7 @@ test('Check that hoverable information for each icon is not displayed until hove
 });
 
 test('Check that image is displayed for each icon before hovered over.', async() => {
-  await render(<App url='/grid' />);
+  await act( async () => render(<Grid/>));
 
   const carrot = screen.getByAltText('carrot');
   expect(carrot).toHaveAttribute('src', 'https://static.thenounproject.com/attribution/1211981-600.png');
@@ -98,8 +101,8 @@ test('Check that image is displayed for each icon before hovered over.', async()
 
 
 test('Renders entire form (all fields + submit button)', async() => {
-  render(<App />);
-  await fireEvent.click(screen.getByText('Dropdown'));
+  render(<Dropdown/>);
+  //await fireEvent.click(screen.getByText('Dropdown'));
   expect(screen.getByText('Before you start planning...')).toBeInTheDocument();
   expect(screen.getByText('Location')).toBeInTheDocument();
   expect(screen.getByText('Temperature Range')).toBeInTheDocument();
@@ -107,12 +110,55 @@ test('Renders entire form (all fields + submit button)', async() => {
 });
 
 test('Renders geolocation button and gets user location', async() => {
-  render(<App />);
-  await fireEvent.click(screen.getByText('Dropdown'));
+  await act( async () => render(<Dropdown/>));
+  //await fireEvent.click(screen.getByText('Dropdown'));
   expect(screen.getByText("Get Location")).toBeInTheDocument();
 
   const button = screen.getByRole('button', {name: 'Get Location'});
   fireEvent.click(button);
 
   expect(screen.getByText('Geolocation is not supported by your browser')).toBeInTheDocument();
+});
+
+test('Page loads properly & shows correct landing screen', async() => {
+  useAuthState.mockReturnValue([true, false]);
+  await act( async () => {
+    await render(<BrowserRouter><Dashboard/></BrowserRouter>)
+  });
+  var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+  var today_str = new Date().toLocaleDateString("en-US", options);
+  const headerElement = screen.getByText('Today is ' + today_str + '.');
+  expect(headerElement).toBeInTheDocument();
+});
+
+// Not valid after merge
+test.skip('Page shows app description', async () => {
+  await act( async () => render(<App/>));
+  const pageDescript = screen.getByText('Get help with your crop planning!');
+  expect(pageDescript).toBeInTheDocument();
+});
+
+
+test.skip('Page shows nav bar', async () => {
+  render(<App/>);
+  const nav_one = screen.getByText('About us');
+  const nav_two = screen.getByText('Contact us');
+  const nav_three = screen.getByText('Sign in');
+  const nav_four = screen.getByText('Sign up');
+
+  expect(nav_one).toBeInTheDocument();
+  expect(nav_two).toBeInTheDocument();
+  expect(nav_three).toBeInTheDocument();
+  expect(nav_four).toBeInTheDocument();
+});
+
+test('Test change URL', async () => {
+  global.window = { location: { pathname: null } };
+  expect(global.window.location.pathname).toEqual('/');
+});
+
+test.skip('Shows bar with about link', async () => {
+  render(<App/>);
+  const headerElement = screen.getByText('About');
+  expect(headerElement).toBeInTheDocument();
 });

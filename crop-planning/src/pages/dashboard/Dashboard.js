@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { useNavigate } from "react-router-dom";
+import {  useNavigate } from "react-router-dom";
 import "./Dashboard.css";
-import { auth, db, logout } from "./firebase";
+import { auth, db, logout } from "../firebase";
 import { query, collection, getDocs, where } from "firebase/firestore";
 // import {ref,push, child} from "firebase/database";
 import { doc, setDoc} from "firebase/firestore"; 
+
 
 function Dashboard() {
   // eslint-disable-next-line no-unused-vars
@@ -77,7 +78,7 @@ function Dashboard() {
 
   return (
     <div className="dashboard">
-      <p>
+      <div className="block">
       <div className="dashboard__container"> 
         <div className="date">Welcome, {name}!</div>
         <div className="text">Today is {today_str}.</div>
@@ -86,8 +87,8 @@ function Dashboard() {
           Logout
         </button>
       </div>
-      </p>
-      <p>
+      </div>
+      <div className="block">
       <div className="dashboard__container"> 
           <div className="form-body">
               <div className="username">
@@ -107,7 +108,7 @@ function Dashboard() {
               <button onClick={()=>handleSubmit()} type="submit" className="dashboard__btn">Submit</button>
           </div>
       </div>
-      </p>
+      </div>
     </div>
   );
 }

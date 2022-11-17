@@ -83,7 +83,7 @@ let BlueberryAttributes = {
     LowerSunLightHour: 6.0,
     Radius: 48.0,
 	LowerSoilPH: 4.0, UpperSoilPH: 5.0, 
-    PlantFamily: Ericaceae,
+    PlantFamily: "Ericaceae",
     BadNeighbors: ["Nightshade", "Brassica", "Melon", "Lettuce", "Collard Greens", "Herbs", "Bean", "Beet", "Pea"]
 } 
 
