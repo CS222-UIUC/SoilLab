@@ -28,6 +28,8 @@ class Navbar extends React.Component {
                         )
                     })}
                 </ul>
+
+                {/* <Button>Sign up</Button> */}
             </nav>
         ) 
     }

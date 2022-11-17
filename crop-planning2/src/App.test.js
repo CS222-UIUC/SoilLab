@@ -52,3 +52,23 @@ test('Check that hoverable information for each icon is not displayed until hove
   await waitFor(() => screen.getByTestId('Rice'))
   expect(screen.getByText('This grain is brown.')).toBeInTheDocument()
 });
+
+test('Check that image is displayed for each icon before hovered over.', async() => {
+  render(<App />);
+
+  const carrot = screen.getByAltText('carrot');
+  expect(carrot).toHaveAttribute('src', 'https://static.thenounproject.com/attribution/1211981-600.png');
+
+  const corn = screen.getByAltText('corn');
+  expect(corn).toHaveAttribute('src', 'https://static.thenounproject.com/attribution/1197411-600.png');
+
+  const soybean = screen.getByAltText('soybean');
+  expect(soybean).toHaveAttribute('src', 'https://static.thenounproject.com/attribution/5164867-600.png');
+
+  const cabbage = screen.getByAltText('cabbage');
+  expect(cabbage).toHaveAttribute('src', 'https://static.thenounproject.com/attribution/1482111-600.png');
+
+  const rice = screen.getByAltText('rice');
+  expect(rice).toHaveAttribute('src', 'https://static.thenounproject.com/attribution/56585-600.png');
+
+});
