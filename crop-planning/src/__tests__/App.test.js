@@ -96,3 +96,23 @@ test('Check that image is displayed for each icon before hovered over.', async()
 
 });
 
+
+test('Renders entire form (all fields + submit button)', async() => {
+  render(<App />);
+  await fireEvent.click(screen.getByText('Dropdown'));
+  expect(screen.getByText('Before you start planning...')).toBeInTheDocument();
+  expect(screen.getByText('Location')).toBeInTheDocument();
+  expect(screen.getByText('Temperature Range')).toBeInTheDocument();
+  expect(screen.getByText('Submit')).toBeInTheDocument();
+});
+
+test('Renders geolocation button and gets user location', async() => {
+  render(<App />);
+  await fireEvent.click(screen.getByText('Dropdown'));
+  expect(screen.getByText("Get Location")).toBeInTheDocument();
+
+  const button = screen.getByRole('button', {name: 'Get Location'});
+  fireEvent.click(button);
+
+  expect(screen.getByText('Geolocation is not supported by your browser')).toBeInTheDocument();
+});

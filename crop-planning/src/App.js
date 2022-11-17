@@ -6,6 +6,7 @@ import CropModelBoard from './pages/cropModelBoard';
 import SuggestionBoard from './pages/suggestionBoard';
 import Form from './pages/form';
 import Grid from './pages/grid';
+import Dropdown from './pages/dropdown';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
             <Route path='/suggestionBoard' element={<SuggestionBoard/>}/>
             <Route path='/grid' element={<Grid/>}/>
             <Route path='/form' element={<Form/>}/>
+            <Route path='/dropdown' element={<Dropdown/>}/>
           </Routes>
         </Sidebar>
       </BrowserRouter>

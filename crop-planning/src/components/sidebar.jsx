@@ -14,6 +14,7 @@ import {
 } from "react-icons/gi";
 
 import {
+    FaArrowDown,
     FaBars
 } from "react-icons/fa";
 
@@ -39,7 +40,12 @@ const Sidebar = ({children}) => {
             path: '/form',
             "name": "Form",
             icon: <FaBars/>
-        }
+        }, {
+            path: '/dropdown',
+            "name": "Dropdown",
+            icon: <FaArrowDown />
+        } 
+
 
     ]
     return (
