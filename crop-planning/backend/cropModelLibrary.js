@@ -1,41 +1,41 @@
 import {CropModel, CropAttrs} from './cropModel';
 
 let CornAttributes = {
-    LowerTemperatureLimit: 59.0, higherTemperatureLimit: 77.0,
-    LowerIrrigationLimit: 20.0, HigherIrrigationLimit: 100.0,
-    LowerLightLimit: 1500.0, HigherLightLimit: 1800.0,
-    Radius: 20.0
+    LowerTemperatureLimit: 60.0, higherTemperatureLimit: 95.0,
+    LowerIrrigationLimit: 2.0, HigherIrrigationLimit: 4.0,
+    LowerSunLightHour: 6.0,
+    Radius: 4.0
 }
 
-let BroccoliAttributes = {
-    LowerTemperatureLimit: 59.0, higherTemperatureLimit: 77.0,
-    LowerIrrigationLimit: 20.0, HigherIrrigationLimit: 100.0,
-    LowerLightLimit: 1500.0, HigherLightLimit: 1800.0,
-    Radius: 20.0
+let TomatoAttributes = {
+    LowerTemperatureLimit: 55.0, higherTemperatureLimit: 77.0,
+    LowerIrrigationLimit: 2.0, HigherIrrigationLimit: 4.0,
+    LowerSunLightHour: 8.0,
+    Radius: 40.0
 }
 
 let CarrotAttributes = {
-    LowerTemperatureLimit: 59.0, higherTemperatureLimit: 77.0,
-    LowerIrrigationLimit: 20.0, HigherIrrigationLimit: 100.0,
-    LowerLightLimit: 1500.0, HigherLightLimit: 1800.0,
-    Radius: 5.0
+    LowerTemperatureLimit: 45.0, higherTemperatureLimit: 75.0,
+    LowerIrrigationLimit: 2.5, HigherIrrigationLimit: 4.0,
+    LowerSunLightHour: 6.0,
+    Radius: 4.0
 }
 
 let LettuceAttributes = {
-    LowerTemperatureLimit: 59.0, higherTemperatureLimit: 77.0,
-    LowerIrrigationLimit: 20.0, HigherIrrigationLimit: 100.0,
-    LowerLightLimit: 1500.0, HigherLightLimit: 1800.0,
-    Radius: 20.0
+    LowerTemperatureLimit: 45.0, higherTemperatureLimit: 70.0,
+    LowerIrrigationLimit: 1.5, HigherIrrigationLimit: 2.2,
+    LowerSunLightHour: 6.0,
+    Radius: 13
 }
 
 const CornModel = new CropModel("Corn", "Wow", CornAttributes);
-const BroccoliModel = new CropModel("Broccoli", "Wow", BroccoliAttributes);
+const TomatoModel = new CropModel("Tomato", "Wow", TomatoAttributes);
 const CarrotModel = new CropModel("Carrot", "Wow", CarrotAttributes);
-const LettuceModel = new CropModel("Carrot", "Wow", LettuceAttributes);
+const LettuceModel = new CropModel("Lettuce", "Wow", LettuceAttributes);
 
 const CropModels = {
     Corn: CornModel,
-    Broccoli: BroccoliModel,
+    Tomato: TomatoModel,
     Carrot: CarrotModel,
     Lettuce: LettuceModel
 }
