@@ -8,17 +8,19 @@ import Dashboard from '../Dashboard';
 import ReactDOM from 'react-dom';
 import {BrowserRouter, MemoryRouter} from 'react-router-dom'
 
-<<<<<<< HEAD:crop-planning-firebase/src/__tests__/App.test.js
 
-=======
->>>>>>> a8926cd268dfeebc0eaae0bab3065ee894a96c3e:crop-planning-firebase-v2/src/__tests__/App.test.js
 test('Page loads properly & shows correct landing screen', () => {
   render(<App/>);
   const headerElement = screen.getByText('Welcome to');
   expect(headerElement).toBeInTheDocument();
 });
 
-<<<<<<< HEAD:crop-planning-firebase/src/__tests__/App.test.js
+
+test('Shows bar with about link', () => {
+  render(<App/>);
+  const headerElement = screen.getByText('About');
+  expect(headerElement).toBeInTheDocument();
+});
 
 test('Page shows app description', () => {
   render(<App/>);
@@ -37,9 +39,8 @@ test('Page shows nav bar', () => {
   expect(nav_two).toBeInTheDocument();
   expect(nav_three).toBeInTheDocument();
   expect(nav_four).toBeInTheDocument();
-=======
+));
 test('Test change URL', () => {
   global.window = { location: { pathname: null } };
   expect(global.window.location.pathname).toEqual('/');
->>>>>>> a8926cd268dfeebc0eaae0bab3065ee894a96c3e:crop-planning-firebase-v2/src/__tests__/App.test.js
 });

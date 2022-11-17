@@ -2,7 +2,6 @@
 
 .header {
     display: flex;
-    margin-bottom: -150px;
     align-items: center;
     justify-content: center;
     font-family: 'Inter', sans-serif;
@@ -11,3 +10,37 @@
     font-weight: bold;
     color: #0C486B;
 }
+
+.container {
+    position:relative;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin-bottom:-100px;
+    padding: 30px;
+    background-color: #CFF09E;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -o-border-radius: 10px;
+    -ms-border-radius: 10px;
+    border-radius: 10px;
+  }
+
+.other {
+    display: flex;
+    margin-bottom: -150px;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    text-align: center;
+    font-weight: bold;
+    color: #0C486B;
+}
+
+.text {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    margin-top: -120px;
+    color: #0C486B;
+  }
