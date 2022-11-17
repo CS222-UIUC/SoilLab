@@ -42,20 +42,23 @@ test('Test Environment & EnvironmentModel', () => {
     lowSoilTemperatureRange: 20, highSoilTemperatureRange: 40,
     avgPrecipitation: 3.9
   }
-  var environment = new Environment(attributes);
-  var champaign = new EnvironmentModel("UIUC", "Champaign, IL", attributes);
+
+  var champaign = new EnvironmentModel("UIUC", "Champaign, IL", attributes, 40.116421, -88.243385);
 
   expect(champaign.name == "UIUC");
   expect(champaign.location == "Champaign, IL");
   expect(champaign.attributes.lowTemperatureRange === 30);
+  expect(champaign.latitude == 40.116421)
   console.log(champaign);
 });
 
 test('Test Environment Model Library', () => {
-
   expect(ChampaignModel.Autumn.name == "Autumn");
   expect(ChampaignModel.Autumn.lowSoilTemperatureRange == 58);
-
+  expect(ChampaignModel.Autumn.recommendedCrops == ['arugula','beet','bellpepper','broccoli', 'cabbage', 'cantaloupe', 
+  'carrot', 'cauliflower', 'celery', 'corn', 'cucumber', 'eggplant',
+  'greenbeans', 'kale', 'lettuce', 'okra', 'parsnip', 'pea', 'potato',
+  'pumpkin', 'radish', 'spinach', 'tomato', 'turnip', 'watermelon', 'zucchini'])
 });
 
 test('test CropBoard check_adjacent', () => {
@@ -72,7 +75,6 @@ test('test CropBoard check_adjacent', () => {
   expect(r.length == 1);
   expect(r[0][0].name == "Carrot");
   expect(r[0][1].name == "Corn");
-
 });
 
 
