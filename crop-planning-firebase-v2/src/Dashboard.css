@@ -1,0 +1,111 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+
+.dashboard {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+p {
+  margin:0.5em;
+}
+
+.dashboard__container {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  text-align: center;
+  background-color: #A7DCA7;
+  padding: 30px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -o-border-radius: 10px;
+  -ms-border-radius: 10px;
+  border-radius: 10px;
+}
+
+.textBox {
+  margin-left:20px;
+  padding:3px;
+  float:right;
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -o-border-radius: 10px;
+  -ms-border-radius: 10px;
+  border-radius: 10px;
+}
+
+.dashboard__btn {
+  font-family: 'Inter', sans-serif;
+  padding: 10px;
+  font-size: 18px;
+  margin-top: 10px;
+  border: none;
+  color: white;
+  background-color: black;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -o-border-radius: 10px;
+  -ms-border-radius: 10px;
+  border-radius: 10px;
+}
+
+.dashboard div {
+  margin-top: 7px;
+}
+
+.date {
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  font-weight: bold;
+  color: #0C486B;
+  float: center;
+  line-height: 50px;
+  padding: 10 30px 10 30px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  background-position: right -1px;
+  background-repeat: no-repeat;
+  background-color: #CFF09E;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -o-border-radius: 10px;
+  -ms-border-radius: 10px;
+  border-radius: 10px;
+}
+
+.text {
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  font-weight: bold;
+  color: #0C486B;
+}
+
+.form-body > *{
+  padding: 5px;
+}
+
+.form__label{
+  width: 40%;
+}
+
+.form_input{
+  width: 60%;
+  padding: 10px;
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  margin-bottom: 10px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -o-border-radius: 10px;
+  -ms-border-radius: 10px;
+  border-radius: 10px;
+}
+
+.footer{
+  text-align: center;
+}
