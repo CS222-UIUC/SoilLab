@@ -77,7 +77,22 @@ export const Grid = () => {
 function App() {
   return (
     <div className="App">
-      <Grid></Grid>
+
+      <header className="App-header">
+        <h1>Crop Planner</h1>
+        <script src="https://kit.fontawesome.com/1bee948766.js" crossOrigin="anonymous"></script>
+
+      </header>
+      <BrowserRouter>
+        <Sidebar>
+          <Routes>
+            <Route path='/accountDashboard' element={<AccountDashboard/>}/>
+            <Route path='/cropModelBoard' element={<CropModelBoard/>}/>
+            <Route path='/suggestionBoard' element={<SuggestionBoard/>}/>
+            <Route path='/grid' element={<Grid/>}/>
+          </Routes>
+        </Sidebar>
+      </BrowserRouter>
     </div>
   );
 }
