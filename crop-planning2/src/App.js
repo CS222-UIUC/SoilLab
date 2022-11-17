@@ -33,45 +33,40 @@ export const Grid = () => {
 
   return (
     <Root>
-      <GridLayout layout={layout} cols={5} rowHeight={110} width={600}>
+      <GridLayout layout={layout} cols={5} rowHeight={120} width={650}>
         <GridItemWrapper key="Carrot" data-testid="Carrot">
           <div>
-            <div>
-              <div onMouseOver={handleMouseOver} onMouseOut={handleMouseOut}>Carrot</div>
-              {isHovering && <h2>This vegetable is orange.</h2>}
-            </div>
+            <div onMouseOver={handleMouseOver} onMouseOut={handleMouseOut}>Carrot</div>
+            {!isHovering && <img src="https://static.thenounproject.com/attribution/1211981-600.png" alt = "carrot" width="95" height="95"/>}
+            {isHovering && <h2>This vegetable is orange.</h2>}
           </div>
         </GridItemWrapper>
         <GridItemWrapper key="Corn" data-testid="Corn">
           <div>
-            <div>
-              <div onMouseOver={handleMouseOver} onMouseOut={handleMouseOut}>Corn</div>
-              {isHovering && <h2>This vegetable is yellow (usually).</h2>}
-            </div>
+            <div onMouseOver={handleMouseOver} onMouseOut={handleMouseOut}>Corn</div>
+            {!isHovering && <img src="https://static.thenounproject.com/attribution/1197411-600.png" alt = "corn" width="95" height="95"/>}
+            {isHovering && <h2>This vegetable is yellow (usually).</h2>}
           </div>
         </GridItemWrapper>
         <GridItemWrapper key="Soybean" data-testid="Soybean">
           <div>
-            <div>
-              <div onMouseOver={handleMouseOver} onMouseOut={handleMouseOut}>Soybean</div>
-              {isHovering && <h2>I have no clue what color this legume is. Tan?</h2>}
-            </div>
+            <div onMouseOver={handleMouseOver} onMouseOut={handleMouseOut}>Soybean</div>
+            {!isHovering && <img src="https://static.thenounproject.com/attribution/5164867-600.png" alt = "soybean" width="95" height="95"/>}
+            {isHovering && <h2>I have no clue what color this legume is. Tan?</h2>}
           </div>
         </GridItemWrapper>
         <GridItemWrapper key="Cabbage" data-testid="Cabbage">
           <div>
-            <div>
-              <div onMouseOver={handleMouseOver} onMouseOut={handleMouseOut}>Cabbage</div>
-              {isHovering && <h2>This vegetable is green.</h2>}
-            </div>
+            <div onMouseOver={handleMouseOver} onMouseOut={handleMouseOut}>Cabbage</div>
+            {!isHovering && <img src="https://static.thenounproject.com/attribution/1482111-600.png" alt = "cabbage" width="95" height="95"/>}
+            {isHovering && <h2>This vegetable is green.</h2>}
           </div>
         </GridItemWrapper>
         <GridItemWrapper key = "Rice" data-testid="Rice">
           <div>
-            <div>
-              <div onMouseOver={handleMouseOver} onMouseOut={handleMouseOut}>Rice</div>
-              {isHovering && <h2>This grain is brown.</h2>}
-            </div>
+            <div onMouseOver={handleMouseOver} onMouseOut={handleMouseOut}>Rice</div>
+            {!isHovering && <img src="https://static.thenounproject.com/attribution/56585-600.png" alt = "rice" width="95" height="95"/>}
+            {isHovering && <h2>This grain is brown.</h2>}
           </div>
         </GridItemWrapper>
       </GridLayout>

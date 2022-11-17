@@ -16,6 +16,10 @@ style {
 }
 
 h2 {
-  font-size: 85%;
+  font-size: 80%;
   color: #0B486B;
+}
+
+div {
+  font-size: 103%;
 }
