@@ -25,6 +25,7 @@ a sample attributes dictionary input:
     LowerIrrigationLimit: 20.0, HigherIrrigationLimit: 100.0,
     LowerLightLimit: 1500.0, HigherLightLimit: 1800.0,
     Radius(unit in cm, radius of the area needed for growth): 20.0
+    ** the area needed for the plant is a square, the side length of the square is 2 * radius + 1
     (can add more)
 }
 
@@ -33,7 +34,7 @@ a sample attributes dictionary input:
 class CropAttrs {
     constructor (attributes) {
         this.lowerTemperatureLimit = attributes.LowerTemperatureLimit;
-        this.higherTemperatureLimit = attributes.HigherTemperatureLimit;
+        this.higherTemperatureLimit = attributes.higherTemperatureLimit;
         this.lowerIrrigationLimit = attributes.LowerIrrigationLimit;
         this.higherIrrigationLimit = attributes.HigherIrrigationLimit;
         this.lowerLightLimit = attributes.LowerLightLimit;
