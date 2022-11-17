@@ -8,6 +8,7 @@ what an dictionary input should look like:
     LowerIrrigationLimit: (float, unit in cm), HigherIrrigationLimit: (float, unit in cm), (these are the depth of water per week)
     LowerSunLightHour: (float, unit in hour), 
     Radius(unit in cm, radius of the area needed for growth): (float)
+    BadNeighbors: Array of strings containing names of crops that should not be grown with this crop
     (can add more)
 }
 
@@ -35,6 +36,7 @@ class CropAttrs {
         this.higherIrrigationLimit = attributes.HigherIrrigationLimit;
         this.lowerSunLightHour = attributes.LowerSunLightHour; 
         this.radius = attributes.Radius;
+        this.badNeighbors = attributes.BadNeighbors;
     }
 }
 
