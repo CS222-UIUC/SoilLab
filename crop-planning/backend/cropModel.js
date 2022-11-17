@@ -26,6 +26,8 @@ a sample attributes dictionary input:
 
 */
 
+import { Crop } from "./crop";
+
 class CropAttrs {
     constructor (attributes) {
         this.lowerTemperatureLimit = attributes.LowerTemperatureLimit;
@@ -42,10 +44,14 @@ class CropModel {
     name = "Crop";
     description = "N/A";
 
-    constructor (name, description, attributes) {
+    constructor (name, description, attributes, bn) {
         this.name = name;
         this.description = description;
-        this.attributes = new CropAttrs(attributes);
+        if (attributes instanceof CropAttrs) {
+            this.attributes = attributes;
+        } else {
+            this.attributes = new CropAttrs(attributes);
+        }
     }
 }
 
