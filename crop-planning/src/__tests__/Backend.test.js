@@ -34,7 +34,42 @@ test('test Crop Model Library', () => {
 
 });
 
-test('test CropBoard', () => {
+test('test CropBoard check_adjacent', () => {
+
+  let board = new CropBoard(30,30);
+  //let s = board.semicircle_width(10);
+  board.add_crop(CropModels.Carrot, 10, 10);
+  board.add_crop(CropModels.Carrot, 10, 20);
+  board.add_crop(CropModels.Corn, 20, 20);
+  board.visualization();
+  let r = board.check_adjacent();
+  console.log(r);
+
+  expect(r.length == 1);
+  expect(r[0][0].name == "Carrot");
+  expect(r[0][1].name == "Corn");
+
+});
+
+test('test CropBoard check_temperature', () => {
+
+  let board = new CropBoard(30,30);
+  board.visualization();
+  //let s = board.semicircle_width(10);
+  board.add_crop(CropModels.Carrot, 10, 10);
+  board.add_crop(CropModels.Carrot, 10, 20);
+  board.add_crop(CropModels.Corn, 20, 20);
+
+  let r = board.check_temperature(90);
+  console.log(r);
+
+  expect(r.length == 2);
+  // expect(r[0][0].name == "Carrot");
+  // expect(r[0][1].name == "Corn");
+
+});
+
+test('test CropBoard clear', () => {
 
   let board = new CropBoard(30,30);
   board.visualization();

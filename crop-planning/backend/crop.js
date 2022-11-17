@@ -11,7 +11,6 @@ class Crop extends CropModel {
         super(name, description, attributes);
         this.xcoord = xcoord;
         this.ycoord = ycoord;
-        this.radius = attributes.Radius;
     }
 
     // returns a boolean value on whether the temperature is appropriate for this crop
@@ -25,8 +24,8 @@ class Crop extends CropModel {
     }
 
     // returns a boolean value on whether the sunlight intensity is appropriate for this crop
-    check_light_intensity(intensity) {
-        return (intensity <= this.attributes.higherSunLightHour) && (intensity >= this.attributes.lowerSunLightHour);
+    check_sunlight(hour) {
+        return (hour >= this.attributes.lowerSunLightHour);
     }
 
     get_name() {
