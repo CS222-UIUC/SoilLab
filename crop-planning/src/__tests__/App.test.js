@@ -1,4 +1,5 @@
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+import { BrowserRouter } from 'react-router-dom';
 import App from '../App';
 
 test('renders header', () => {
@@ -23,13 +24,8 @@ test('renders cropModelBoard components', async () => {
   expect(screen.getByText('Rice')).toBeInTheDocument();
 });
 
-import { render, renderHook, screen, fireEvent, waitFor} from '@testing-library/react';
-import App, { Grid } from './App';
-import React from 'react';
-
-
 test('Renders entire responsive, draggable grid', async() => {
-  render(<App />);
+  render(<App url='/cropModelBoard' />);
 
   expect(screen.getByText('Carrot')).toBeInTheDocument();
   expect(screen.getByText('Corn')).toBeInTheDocument();
@@ -39,8 +35,10 @@ test('Renders entire responsive, draggable grid', async() => {
 });
 
 test('Check that hoverable information for each icon is not displayed until hover, and then displayed when hovered', async() => {
-  render(<App />);
-  
+  render(
+      <App url='/grid'/>
+  );
+  await fireEvent.click(screen.getByText('Grid'));
   const carrot = screen.queryByText('This vegetable is orange.');
   expect(carrot).not.toBeInTheDocument();
 
@@ -79,7 +77,7 @@ test('Check that hoverable information for each icon is not displayed until hove
 });
 
 test('Check that image is displayed for each icon before hovered over.', async() => {
-  render(<App />);
+  await render(<App url='/grid' />);
 
   const carrot = screen.getByAltText('carrot');
   expect(carrot).toHaveAttribute('src', 'https://static.thenounproject.com/attribution/1211981-600.png');
@@ -98,20 +96,3 @@ test('Check that image is displayed for each icon before hovered over.', async()
 
 });
 
-test('test Crop & CropModel Classes', () => {
-  let attributes = {
-    LowerTemperatureLimit: 59.0, higherTemperatureLimit: 77.0,
-    LowerIrrigationLimit: 20.0, HigherIrrigationLimit: 100.0,
-    LowerLightLimit: 1500.0, HigherLightLimit: 1800.0,
-    Radius: 20.0
-}
-  var myCropAttrs = new CropAttrs(attributes);
-  var myCropModel = new CropModel("My Plant", "Wow", myCropAttrs);
-  var myCrop = new Crop("Crop1", "This is a crop", myCropAttrs, 2, 2);
-
-  expect(myCropModel.name == "My Plant");
-  expect(myCropModel.description == "Wow");
-  expect(myCrop.name == "Crop1");
-  expect(myCrop.description == "This is a crop");
-  expect(myCrop.xcoord == 2 && myCrop.ycoord == 2);
-});
