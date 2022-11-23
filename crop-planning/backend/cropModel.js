@@ -36,9 +36,9 @@ import { Crop } from "./crop";
 class CropAttrs {
     constructor (attributes) {
         this.lowerTemperatureLimit = attributes.LowerTemperatureLimit;
-        this.UpperTemperatureLimit = attributes.UpperTemperatureLimit;
+        this.upperTemperatureLimit = attributes.UpperTemperatureLimit;
         this.lowerIrrigationLimit = attributes.LowerIrrigationLimit;
-        this.UpperIrrigationLimit = attributes.UpperIrrigationLimit;
+        this.upperIrrigationLimit = attributes.UpperIrrigationLimit;
         this.lowerSunLightHour = attributes.LowerSunLightHour; 
         this.radius = attributes.Radius;
         this.lowerSoilPH = attributes.LowerSoilPH;

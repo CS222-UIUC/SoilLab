@@ -1,9 +1,12 @@
 import { FaLeaf } from "react-icons/fa";
 import { Crop } from "./crop";
 import { CropModel } from "./cropModel";
+import { EnvironmentModel } from "./cropEnvironment";
+import { ChampaignModel } from "./cropEnvironmentLibrary";
 
 // actually Carrot and Corn can be planted together, this is just for testing
-let bad_neighbors = { "Corn": ["Tomato", "Carrot"] , "Tomato": ["Corn"], "Carrot": ["Celery", "Parsnip", "Corn"], "Lettuce": ["Garlic"] };
+// let bad_neighbors = { "Corn": ["Tomato", "Carrot"] , "Tomato": ["Corn"], "Carrot": ["Celery", "Parsnip", "Corn"], "Lettuce": ["Garlic"] };
+
 class CropBoard {
     constructor (width, height) {
         if (width < 1 || height < 1) {
@@ -20,6 +23,7 @@ class CropBoard {
         this.crop_dict = {};
         this.crops = [];
         this.crop_type_number = 0;
+        this.environment = ChampaignModel.Autumn;
     }
 
     visualization() {
@@ -78,13 +82,13 @@ class CropBoard {
         console.log("crop board cleared");
     }
 
-    suggestion(weather) {
+    suggestion() {
         let problems = {
             /* will add more attributes once the weather data is organized into a class or inside CropBoard */
-            Temperature: this.check_temperature(weather.temperature),
-            Irrigation: this.check_irrigation(weather.irrigation),
-            Sunlight: this.check_sunlight(weather.sunlightHour),
-            BadNeigborPairs: this.check_adjacent(),
+            Temperature: this.check_temperature([this.environment.attributes.lowTemperatureRange, this.environment.attributes.highTemperatureRange]),
+            Irrigation: this.check_irrigation(this.environment.attributes.avgPrecipitation),
+            // Sunlight: this.check_sunlight(weather.sunlightHour),
+            BadNeigborPairs: this.check_adjacent()
         };
         return problems;
     }
@@ -205,6 +209,47 @@ class CropBoard {
         return light_inappropriate;
     }
 
+    check_soilph(ph) {
+        // an array of Crop that won't grow well in this irrigation amount
+        console.log("running check_soilph");
+        let ph_inappropriate = [];
+
+        if (Array.isArray(ph)) {
+            if (ph.length == 2) {
+                // the array is in format [a, b], which means the upper and lower range of irrigation(depth)
+                for (var i = 0; i < this.crops.length; i++) {
+                    if (!(this.crops[i].check_soilph(ph[0]) && this.crops[i].check_soilph(ph[1]))) {
+                        ph_inappropriate.push(this.crops[i]);
+                    }
+                }
+            } else {
+                /* the array is an array of multiple irrigation(depth), 
+                check if all these irrigation(depth) amount are good
+                */
+                for (var i = 0; i < this.crops.length; i++) {
+                    for (var j = 0; j < ph.length; j++) {
+                        if (!(this.crops[i].check_soilph(ph[j]))) {
+                            ph_inappropriate.push(this.crops[i]);
+                            break;
+                        }
+                    }
+                }
+            }
+
+        } else {
+            /* there is only one single irrigation value */
+
+            for (var i = 0; i < this.crops.length; i++) {
+                if (!(this.crops[i].check_soilph(ph))) {
+                    ph_inappropriate.push(this.crops[i]);
+                }
+            }
+
+        }
+        return ph_inappropriate;
+    }
+
+    // function to check whether there are invalid adjacaent crops
     check_adjacent() {
         let bad_adjacent = []
         let bad_coord_set = new Set();
@@ -237,9 +282,9 @@ class CropBoard {
 
         if (crop1.get_name() == crop2.get_name()) return true;
 
-        let bad_n = bad_neighbors[crop1.get_name()];
+        let bad_n = crop1.attributes.badNeighbors;
         for (var i = 0; i < bad_n.length; i++) {
-            if (bad_n[i] == crop2.get_name()) {
+            if (bad_n[i] == crop2.get_name() || bad_n[i] == crop2.attributes.plantFamily) {
                 return false;
             }
         }
