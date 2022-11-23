@@ -24,7 +24,7 @@ function Home() {
 
         <div className="title">
 		<h1>SoilLab</h1>
-        <p> Get help with your crop planning!</p>
+        <p style={{fontStyle: "oblique", color: "#0C486B"}}> Get help with your crop planning!</p>
         </div>
 
         {/* <ul>

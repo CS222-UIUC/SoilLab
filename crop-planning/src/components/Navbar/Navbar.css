@@ -9,10 +9,10 @@
 }
 
 .navbar-logo {
-    color: #fff;
+    color: #3C8586;
     align-items: left;
-    margin-left:-125px;
-    margin-right:300px;
+    margin-left:-20px;
+    margin-right:400px;
     cursor: pointer;
 }
 
@@ -32,19 +32,20 @@
 }
 
 .nav-links {
-    color:white;
+    color:#3C8586;
     text-decoration: none;
     padding: 0.5rem 1rem;
 }
 
 .nav-links:hover{
-    background-color: #3a1d07;
+    background-color: #0C486B;
+    color:#A7DCA7;
     border-radius: 30px;
     transition: all 0.2s ease-out;
 }
 
 .fa-bars{
-    color: white;
+    color: #3C8586;
 }
 
 .nav-links-mobile{
