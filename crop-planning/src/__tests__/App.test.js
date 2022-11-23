@@ -11,14 +11,14 @@ import { useAuthState } from "../__mocks__/auth"
 
 
 
-test('renders header', () => {
-  render(<App/>);
+// test('renders header', () => {
+//   render(<App/>);
 
-  // await userEvent.click(screen.getByText('Load Greeting'))
+//   // await userEvent.click(screen.getByText('Load Greeting'))
 
-  const headerElement = screen.getByText('Crop Planner');
-  expect(headerElement).toBeInTheDocument();
-});
+//   const headerElement = screen.getByText('Crop Planner');
+//   expect(headerElement).toBeInTheDocument();
+// });
 
 test('renders cropModelBoard components', async () => {
   render(<CropModelBoard/>);
