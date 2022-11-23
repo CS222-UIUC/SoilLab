@@ -6,14 +6,14 @@ export const MenuItems = [
     },
     {
         title: 'About us',
-        url: '#',
+        url: '/About',
         cName: 'nav-links'
     },
-    {
-        title: 'Contact us',
-        url: '#',
-        cName: 'nav-links'
-    },
+    // {
+    //     title: 'Contact us',
+    //     url: '#',
+    //     cName: 'nav-links'
+    // },
     {
         title: 'Dashboard',
         url: './dashboard',
@@ -28,22 +28,22 @@ export const MenuItems = [
         title: 'Sign up',
         url: './Register',
         cName: 'nav-links'
-    },
-    {
-        url:"/suggestionBoard",
-        title: "Analyze",
-        cName: 'nav-links'
-    }, {
-        url: '/grid',
-        "title": "Grid",
-        cName: 'nav-links'
-    }, {
-        url: '/form',
-        "title": "Form",
-        cName: 'nav-links'
-    }, {
-        url: '/dropdown',
-        "title": "Dropdown",
-        cName: 'nav-links'
-    }
+    }//,
+    // {
+    //     url:"/suggestionBoard",
+    //     title: "Analyze",
+    //     cName: 'nav-links'
+    // }, {
+    //     url: '/grid',
+    //     "title": "Grid",
+    //     cName: 'nav-links'
+    // }, {
+    //     url: '/form',
+    //     "title": "Form",
+    //     cName: 'nav-links'
+    // }, {
+    //     url: '/dropdown',
+    //     "title": "Dropdown",
+    //     cName: 'nav-links'
+    // }
 ]
