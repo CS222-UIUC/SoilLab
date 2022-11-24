@@ -1,7 +1,7 @@
 export const MenuItems = [
     {
         title: 'Home',
-        url: './App',
+        url: '/',
         cName: 'nav-links'
     },
     {
@@ -14,11 +14,11 @@ export const MenuItems = [
         url: '#',
         cName: 'nav-links'
     },
-    // {
-    //     title: 'Dashboard',
-    //     url: './Dashboard',
-    //     cName: 'nav-links'
-    // },
+    {
+        title: 'Dashboard',
+        url: './dashboard',
+        cName: 'nav-links'
+    },
     {
         title: 'Sign in',
         url: './Login',
@@ -27,6 +27,23 @@ export const MenuItems = [
     {
         title: 'Sign up',
         url: './Register',
+        cName: 'nav-links'
+    },
+    {
+        url:"/suggestionBoard",
+        title: "Analyze",
+        cName: 'nav-links'
+    }, {
+        url: '/grid',
+        "title": "Grid",
+        cName: 'nav-links'
+    }, {
+        url: '/form',
+        "title": "Form",
+        cName: 'nav-links'
+    }, {
+        url: '/dropdown',
+        "title": "Dropdown",
         cName: 'nav-links'
     }
 ]

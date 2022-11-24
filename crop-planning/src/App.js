@@ -10,9 +10,12 @@ import CropModelBoard from './pages/cropModelBoard';
 import SuggestionBoard from './pages/suggestionBoard';
 import Form from './pages/form';
 import Grid from './pages/grid';
+import Footer from './components/Footer/Footer';
 import Dropdown from './pages/dropdown';
 import { auth } from "./pages/firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
+import Home from './pages/Home/Home';
+import Navbar from './components/Navbar/Navbar';
 
 function App() {
   const [user, _loading, _error] = useAuthState(auth);
@@ -25,10 +28,10 @@ function App() {
 
       </header>
       <BrowserRouter>
-        {user && <Sidebar></Sidebar>}
+        <Navbar/>
           <Routes>
-            <Route path='/' element={<Login />} />
-            <Route exact path="/login" element={<Login />} />
+            <Route path='/' element={<Home />} />
+            <Route path='/login' element={<Login />} />
             <Route exact path="/register" element={<Register />} />
             <Route exact path="/reset" element={<Reset />} />
             <Route exact path="/dashboard" element={<Dashboard />} />
@@ -38,6 +41,7 @@ function App() {
             <Route path='/form' element={<Form/>}/>
             <Route path='/dropdown' element={<Dropdown/>}/>
           </Routes>
+          <Footer />
       </BrowserRouter>
     </div>
   );
