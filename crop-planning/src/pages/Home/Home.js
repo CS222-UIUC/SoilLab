@@ -23,9 +23,8 @@ function Home() {
         </div>
 
         <div className="title">
-        <h2 className="text-2xl md:text-4xl lg:text-6xl uppercase">Welcome to</h2>
-		<h1 className="text-3xl md:text-6xl lg:text-8xl uppercase font-black mb-8">SoilLab</h1>
-        <p className="text-base md:text-lg lg:text-2xl mb-8">Get help with your crop planning!</p>
+		<h1>SoilLab</h1>
+        <p style={{fontStyle: "oblique", color: "#0C486B"}}> Get help with your crop planning!</p>
         </div>
 
         {/* <ul>
