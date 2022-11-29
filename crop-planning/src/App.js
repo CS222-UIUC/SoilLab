@@ -16,6 +16,7 @@ import { auth } from "./pages/firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import Home from './pages/Home/Home';
 import Navbar from './components/Navbar/Navbar';
+import About from './pages/About/About';
 
 function App() {
   const [user, _loading, _error] = useAuthState(auth);
@@ -39,6 +40,7 @@ function App() {
             <Route path='/grid' element={<Grid/>}/>
             <Route path='/form' element={<Form/>}/>
             <Route path='/dropdown' element={<Dropdown/>}/>
+            <Route path='/about' element={<About />} />
           </Routes>
           <Footer />
       </BrowserRouter>

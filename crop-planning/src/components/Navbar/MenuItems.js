@@ -5,15 +5,15 @@ export const MenuItems = [
         cName: 'nav-links'
     },
     {
-        title: 'About',
-        url: '#',
+        title: 'About us',
+        url: '/About',
         cName: 'nav-links'
     },
-    {
-        title: 'Contact',
-        url: '#',
-        cName: 'nav-links'
-    },
+    // {
+    //     title: 'Contact us',
+    //     url: '#',
+    //     cName: 'nav-links'
+    // },
     {
         title: 'Dashboard',
         url: './dashboard',
@@ -28,7 +28,7 @@ export const MenuItems = [
         title: 'Register',
         url: './Register',
         cName: 'nav-links'
-    },
+    }//,
     // {
     //     url:"/suggestionBoard",
     //     title: "Analyze",
