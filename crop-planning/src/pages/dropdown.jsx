@@ -115,8 +115,8 @@ function Dropdown() {
             // value={location_data}
           />
 
-          {/* <button type="button" onClick={getLocation}>Get Location</button>
-          <p>{status}</p> */}
+          <button type="button" onClick={getLocation}>Get Location</button>
+          <p>{status}</p>
           
 
           <MySelect label="Temperature Range" name="temperature">
