@@ -7,8 +7,8 @@ const layout = [
     { i: "Carrot", x: 0, y: 0, w: 1, h: 1 },
     { i: "Corn", x: 1, y: 0, w: 1, h: 1 },
     { i: "Soybean", x: 2, y: 0, w: 1, h: 1 },
-    { i: "Cabbage", x: 3, y: 0, w: 1, h: 1 },
-    { i: "Rice", x: 4, y: 0, w: 1, h: 1 }
+    { i: "Cabbage", x: 0, y: 0, w: 1, h: 1 },
+    { i: "Rice", x: 1, y: 1, w: 1, h: 1 }
   ];
   
 const GridItemWrapper = styled.div`
@@ -18,7 +18,7 @@ const GridItemWrapper = styled.div`
 `;
   
 const Root = styled.div`
-  padding: 16px;
+  margin: 16px;
 `;
 
 const MySelect = ({ label, ...props }) => {
@@ -44,10 +44,18 @@ export const Grid = () => {
     const handleMouseOut = () => {
       setIsHovering(false);
     };
-  
+
+    function addCrop() {
+      var canvas = document.querySelector("GridCanvas");
+      var ctx = canvas.getContext("2d");
+      console.log(canvas);
+      ctx.fillStyle = 'red';
+      ctx.fillRect(10,10,200,200);  
+    }
+
     return (
       <Root>
-        <GridLayout layout={layout} cols={5} rowHeight={120} width={650}>
+        <GridLayout layout={layout} cols={3} rows={3} rowHeight={120} width={360}>
           <GridItemWrapper key="Carrot" data-testid="Carrot">
             <div>
               <div onMouseOver={handleMouseOver} onMouseOut={handleMouseOut}>Carrot</div>
@@ -85,152 +93,57 @@ export const Grid = () => {
           </GridItemWrapper>
         </GridLayout>
 
-        <div class="grid-container">
-          <div class="grid-item"></div>
-          <div class="grid-item"></div>
-          <div class="grid-item"></div>  
-          <div class="grid-item"></div>
-          <div class="grid-item"></div>
-          <div class="grid-item"></div>  
-          <div class="grid-item"></div>
-          <div class="grid-item"></div>
-          <div class="grid-item"></div>
-          <div class="grid-item"></div>
-          <div class="grid-item"></div>
-          <div class="grid-item"></div>  
-          <div class="grid-item"></div>
-          <div class="grid-item"></div>
-          <div class="grid-item"></div>  
-          <div class="grid-item"></div>
-          <div class="grid-item"></div>
-          <div class="grid-item"></div>  
-          <div class="grid-item"></div>
-          <div class="grid-item"></div>
-          <div class="grid-item"></div>  
-          <div class="grid-item"></div>
-          <div class="grid-item"></div>
-          <div class="grid-item"></div>  
-          <div class="grid-item"></div>
-          <div class="grid-item"></div>
-          <div class="grid-item"></div>
-          <div class="grid-item"></div>
-          <div class="grid-item"></div>
-          <div class="grid-item"></div>  
-          <div class="grid-item"></div>
-          <div class="grid-item"></div>
-          <div class="grid-item"></div>  
-          <div class="grid-item"></div>
-          <div class="grid-item"></div>
-          <div class="grid-item"></div>
-          <div class="grid-item"></div>
-          <div class="grid-item"></div>
-          <div class="grid-item"></div>  
-          <div class="grid-item"></div>
-          <div class="grid-item"></div>
-          <div class="grid-item"></div>  
-          <div class="grid-item"></div>
-          <div class="grid-item"></div>
-          <div class="grid-item"></div> 
-          <div class="grid-item"></div>  
-          <div class="grid-item"></div>
-          <div class="grid-item"></div>
-          <div class="grid-item"></div>  
-          <div class="grid-item"></div>
-          <div class="grid-item"></div>
-          <div class="grid-item"></div>
-          <div class="grid-item"></div>  
-          <div class="grid-item"></div>
-          <div class="grid-item"></div>
-          <div class="grid-item"></div>  
-          <div class="grid-item"></div>
-          <div class="grid-item"></div>
-          <div class="grid-item"></div> 
-          <div class="grid-item"></div>  
-          <div class="grid-item"></div>
-          <div class="grid-item"></div>
-          <div class="grid-item"></div>  
-          <div class="grid-item"></div>
-          <div class="grid-item"></div>
-          <div class="grid-item"></div>
-          <div class="grid-item"></div>  
-          <div class="grid-item"></div>
-          <div class="grid-item"></div>
-          <div class="grid-item"></div>
-          <div class="grid-item"></div>
-          <div class="grid-item"></div>
-          <div class="grid-item"></div>
-          <div class="grid-item"></div>  
-          <div class="grid-item"></div>
-          <div class="grid-item"></div>
-          <div class="grid-item"></div>
-          <div class="grid-item"></div>
-          <div class="grid-item"></div>
-          <div class="grid-item"></div>
-          <div class="grid-item"></div>  
-          <div class="grid-item"></div>
-          <div class="grid-item"></div>
-          <div class="grid-item"></div> 
-          <div class="grid-item"></div>
-          <div class="grid-item"></div>
-          <div class="grid-item"></div>
-          <div class="grid-item"></div>  
-          <div class="grid-item"></div>
-          <div class="grid-item"></div>
-          <div class="grid-item"></div>
-          <div class="grid-item"></div>
-          <div class="grid-item"></div>
-          <div class="grid-item"></div>
-          <div class="grid-item"></div>  
-          <div class="grid-item"></div>
-          <div class="grid-item"></div>
-          <div class="grid-item"></div>
-          <div class="grid-item"></div>
-          <div class="grid-item"></div>
-          <div class="grid-item"></div>
-          <div class="grid-item"></div>  
-          <div class="grid-item"></div>
-          <div class="grid-item"></div>
-          <div class="grid-item"></div>
-          <div class="grid-item"></div>
-          <div class="grid-item"></div>
-          <div class="grid-item"></div>
-          <div class="grid-item"></div>
-          <div class="grid-item"></div>
-        </div>
+        <canvas id="GridCanvas" width="600" height="600" onClick={() => {
+            
+            var canvas = document.getElementById("GridCanvas");
+            var ctx = canvas.getContext("2d");
+            var rect = canvas.getBoundingClientRect();
+
+            var e = window.event;
+
+            var x = e.clientX - (rect.left);
+            var y = e.clientY - (rect.top);
+
+            ctx.fillStyle = 'red';
+            ctx.fillRect(x,y,10,10);
+
+          }}>
+        </canvas>
 
         <br></br>
         <br></br>
         <br></br>
 
         <Formik enableReinitialize
-        initialValues={{
-          crop: '' // select
+          initialValues={{
+            crop: '' // select
+          }
         }
-      }
 
-        onSubmit={(values, { setSubmitting }) => {
-          setTimeout(() => {
-            alert(JSON.stringify(values, null, 2));
-            setSubmitting(false);
-          }, 400);
-        }}
+          onSubmit={(values, { setSubmitting }) => {
+            setTimeout(() => {
+              alert(JSON.stringify(values, null, 2));
+              setSubmitting(false);
+            }, 400);
+          }}
 
-      >
-        <Form method="POST">
-          <MySelect label="Select Crop" name="crop">
-            <option value="">Select a crop to put on the grid</option>
-            <option value="Corn">Corn!</option>
-            <option value="Cabbage">Cabbage!</option>
-            <option value="Rice">Rice!</option>
-            <option value="Soybean">Soybean!</option>
-            <option value="Carrot">Carrot!</option>
-          </MySelect>
+        >
+          <Form method="POST">
+            <MySelect label="Select Crop" name="crop">
+              <option value="">Select a crop to put on the grid</option>
+              <option value="Corn">Corn!</option>
+              <option value="Cabbage">Cabbage!</option>
+              <option value="Rice">Rice!</option>
+              <option value="Soybean">Soybean!</option>
+              <option value="Carrot">Carrot!</option>
+            </MySelect>
 
-          <button type="submit">Submit</button>
-        </Form>
-      </Formik>
+            <button type="submit">Submit</button>
+          </Form>
+        </Formik>
 
       </Root>
+
     );
   };
   export default Grid;
