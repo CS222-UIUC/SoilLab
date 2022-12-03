@@ -6,6 +6,9 @@ import { auth, db, logout } from "../firebase";
 import { query, collection, getDocs, where } from "firebase/firestore";
 // import {ref,push, child} from "firebase/database";
 import { doc, setDoc} from "firebase/firestore"; 
+// import Sidebar  from '../../components/Sidebar/Sidebar.js';
+// import {  BrowserRouter, Router, Routes, Route } from 'react-router-dom';
+// import Footer from "../../components/Footer/Footer";
 
 
 function Dashboard() {
