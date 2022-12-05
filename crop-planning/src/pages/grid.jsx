@@ -1,6 +1,8 @@
 import GridLayout from "react-grid-layout";
 import styled from "styled-components";
 import {useState} from 'react';
+import { Formik, Form, useField } from 'formik';
+
 const layout = [
     { i: "Carrot", x: 0, y: 0, w: 1, h: 1 },
     { i: "Corn", x: 1, y: 0, w: 1, h: 1 },
@@ -9,13 +11,29 @@ const layout = [
     { i: "Rice", x: 4, y: 0, w: 1, h: 1 }
   ];
   
-  const GridItemWrapper = styled.div`
-    background: #f5f5f5;
-  `;
+const GridItemWrapper = styled.div`
+  background: #f5f5f5;
+  text-align: center;
+  margin: 1rem;
+`;
   
-  const Root = styled.div`
-    padding: 16px;
-  `;
+const Root = styled.div`
+  padding: 16px;
+`;
+
+const MySelect = ({ label, ...props }) => {
+  const [field, meta] = useField(props);
+  return (
+    <div>
+      <label htmlFor={props.id || props.name}>{label}</label>
+      <select {...field} {...props} />
+      {meta.touched && meta.error ? (
+        <div className="error">{meta.error}</div>
+      ) : null}
+    </div>
+  );
+};
+
 export const Grid = () => {
     const [isHovering, setIsHovering] = useState(false);
   
@@ -66,6 +84,152 @@ export const Grid = () => {
             </div>
           </GridItemWrapper>
         </GridLayout>
+
+        <div class="grid-container">
+          <div class="grid-item"></div>
+          <div class="grid-item"></div>
+          <div class="grid-item"></div>  
+          <div class="grid-item"></div>
+          <div class="grid-item"></div>
+          <div class="grid-item"></div>  
+          <div class="grid-item"></div>
+          <div class="grid-item"></div>
+          <div class="grid-item"></div>
+          <div class="grid-item"></div>
+          <div class="grid-item"></div>
+          <div class="grid-item"></div>  
+          <div class="grid-item"></div>
+          <div class="grid-item"></div>
+          <div class="grid-item"></div>  
+          <div class="grid-item"></div>
+          <div class="grid-item"></div>
+          <div class="grid-item"></div>  
+          <div class="grid-item"></div>
+          <div class="grid-item"></div>
+          <div class="grid-item"></div>  
+          <div class="grid-item"></div>
+          <div class="grid-item"></div>
+          <div class="grid-item"></div>  
+          <div class="grid-item"></div>
+          <div class="grid-item"></div>
+          <div class="grid-item"></div>
+          <div class="grid-item"></div>
+          <div class="grid-item"></div>
+          <div class="grid-item"></div>  
+          <div class="grid-item"></div>
+          <div class="grid-item"></div>
+          <div class="grid-item"></div>  
+          <div class="grid-item"></div>
+          <div class="grid-item"></div>
+          <div class="grid-item"></div>
+          <div class="grid-item"></div>
+          <div class="grid-item"></div>
+          <div class="grid-item"></div>  
+          <div class="grid-item"></div>
+          <div class="grid-item"></div>
+          <div class="grid-item"></div>  
+          <div class="grid-item"></div>
+          <div class="grid-item"></div>
+          <div class="grid-item"></div> 
+          <div class="grid-item"></div>  
+          <div class="grid-item"></div>
+          <div class="grid-item"></div>
+          <div class="grid-item"></div>  
+          <div class="grid-item"></div>
+          <div class="grid-item"></div>
+          <div class="grid-item"></div>
+          <div class="grid-item"></div>  
+          <div class="grid-item"></div>
+          <div class="grid-item"></div>
+          <div class="grid-item"></div>  
+          <div class="grid-item"></div>
+          <div class="grid-item"></div>
+          <div class="grid-item"></div> 
+          <div class="grid-item"></div>  
+          <div class="grid-item"></div>
+          <div class="grid-item"></div>
+          <div class="grid-item"></div>  
+          <div class="grid-item"></div>
+          <div class="grid-item"></div>
+          <div class="grid-item"></div>
+          <div class="grid-item"></div>  
+          <div class="grid-item"></div>
+          <div class="grid-item"></div>
+          <div class="grid-item"></div>
+          <div class="grid-item"></div>
+          <div class="grid-item"></div>
+          <div class="grid-item"></div>
+          <div class="grid-item"></div>  
+          <div class="grid-item"></div>
+          <div class="grid-item"></div>
+          <div class="grid-item"></div>
+          <div class="grid-item"></div>
+          <div class="grid-item"></div>
+          <div class="grid-item"></div>
+          <div class="grid-item"></div>  
+          <div class="grid-item"></div>
+          <div class="grid-item"></div>
+          <div class="grid-item"></div> 
+          <div class="grid-item"></div>
+          <div class="grid-item"></div>
+          <div class="grid-item"></div>
+          <div class="grid-item"></div>  
+          <div class="grid-item"></div>
+          <div class="grid-item"></div>
+          <div class="grid-item"></div>
+          <div class="grid-item"></div>
+          <div class="grid-item"></div>
+          <div class="grid-item"></div>
+          <div class="grid-item"></div>  
+          <div class="grid-item"></div>
+          <div class="grid-item"></div>
+          <div class="grid-item"></div>
+          <div class="grid-item"></div>
+          <div class="grid-item"></div>
+          <div class="grid-item"></div>
+          <div class="grid-item"></div>  
+          <div class="grid-item"></div>
+          <div class="grid-item"></div>
+          <div class="grid-item"></div>
+          <div class="grid-item"></div>
+          <div class="grid-item"></div>
+          <div class="grid-item"></div>
+          <div class="grid-item"></div>
+          <div class="grid-item"></div>
+        </div>
+
+        <br></br>
+        <br></br>
+        <br></br>
+
+        <Formik enableReinitialize
+        initialValues={{
+          crop: '' // select
+        }
+      }
+
+        onSubmit={(values, { setSubmitting }) => {
+          setTimeout(() => {
+            alert(JSON.stringify(values, null, 2));
+            setSubmitting(false);
+          }, 400);
+        }}
+
+      >
+        <Form method="POST">
+          <MySelect label="Select Crop" name="crop">
+            <option value="">Select a crop to put on the grid</option>
+            <option value="Corn">Corn!</option>
+            <option value="Cabbage">Cabbage!</option>
+            <option value="Rice">Rice!</option>
+            <option value="Soybean">Soybean!</option>
+            <option value="Carrot">Carrot!</option>
+          </MySelect>
+
+          <button type="submit">Submit</button>
+        </Form>
+      </Formik>
+
       </Root>
     );
   };

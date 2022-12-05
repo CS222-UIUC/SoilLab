@@ -1,8 +1,35 @@
 import '../App.css';
-import React from 'react';
 import { useFormik } from 'formik';
+import { useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from 'react';
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth, db, logout } from "./firebase";
+import { query, collection, getDocs, where } from "firebase/firestore";
+// import {ref,push, child} from "firebase/database";
+import { doc, setDoc} from "firebase/firestore"; 
 
 function Form() {
+    const [user, loading] = useAuthState(auth);
+    const [name, setName] = useState("");
+    // const navigate = useNavigate();
+    const fetchUserName = async () => {
+      try {
+        const q = query(collection(db, "users"), where("uid", "==", user?.uid));
+        const doc = await getDocs(q);
+        const data = doc.docs[0].data();
+
+        setName(data.name);
+      } catch (err) {
+        console.error(err);
+        alert("An error occured while fetching user data");
+      }
+    };
+    useEffect(() => {
+      if (loading) return;
+      // if (!user) return navigate("/");
+
+      fetchUserName();
+    }, [user, loading]);
     const formik = useFormik({
       initialValues: {
         firstName: '',
@@ -12,6 +39,9 @@ function Form() {
       },
       onSubmit: values => {
         alert(JSON.stringify(values, null, 2));
+        const updates = {};
+        updates['/' + user.uid] = values;
+        setDoc(doc(db, "feedback", user.uid), updates);
       },
     });
     

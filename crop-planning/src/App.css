@@ -61,7 +61,8 @@ label {
 input[type="email"],
 input[type="text"],
 input[type="number"],
-input[type="feedback"] {
+input[type="feedback"],
+input[type="crop"] {
   background: white;
   padding: 0.65rem 0.5rem;
   font-size: 1rem;
@@ -138,4 +139,21 @@ label.checkbox {
 
 button[type="submit"] {
   margin-top: 1rem;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto auto auto auto auto auto auto auto;
+  padding: 10px;
+  width: 500px;
+  position: relative;
+  top: -150px;
+  float: right; 
+}
+
+.grid-item {
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  padding: 20px;
+  font-size: 30px;
+  text-align: center;
 }
