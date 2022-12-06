@@ -11,7 +11,7 @@ import { doc, setDoc} from "firebase/firestore";
 function Form() {
     const [user, loading] = useAuthState(auth);
     const [name, setName] = useState("");
-    // const navigate = useNavigate();
+    const navigate = useNavigate();
     const fetchUserName = async () => {
       try {
         const q = query(collection(db, "users"), where("uid", "==", user?.uid));
@@ -26,8 +26,11 @@ function Form() {
     };
     useEffect(() => {
       if (loading) return;
-      // if (!user) return navigate("/");
-
+      if (!user) {
+        alert("Please login or create an account.")
+        return navigate("/");
+      }
+  
       fetchUserName();
     }, [user, loading]);
     const formik = useFormik({
