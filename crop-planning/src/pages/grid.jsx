@@ -185,6 +185,3 @@ export const Grid = () => {
   };
 
   export default Grid;
-  // export function get_suggestion() {
-  //   return suggestion_str;
-  // }
