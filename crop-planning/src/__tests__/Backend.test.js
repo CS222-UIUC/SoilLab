@@ -1,9 +1,9 @@
-import {Crop} from '../../backend/crop';
-import {CropModel, CropAttrs} from '../../backend/cropModel';
-import {CropModels} from '../../backend/cropModelLibrary';
-import {CropBoard} from '../../backend/cropBoard';
-import { Environment, EnvironmentModel } from '../../backend/cropEnvironment';
-import { ChampaignModel } from '../../backend/cropEnvironmentLibrary';
+import {Crop} from '../backend/crop';
+import {CropModel, CropAttrs} from '../backend/cropModel';
+import {CropModels} from '../backend/cropModelLibrary';
+import {CropBoard} from '../backend/cropBoard';
+import { Environment, EnvironmentModel } from '../backend/cropEnvironment';
+import { ChampaignModel } from '../backend/cropEnvironmentLibrary';
 
 test('test Crop & CropModel Classes', () => {
     let attributes = {
@@ -143,7 +143,7 @@ test('test CropBoard suggestion', () => {
   // };
 
   let problems = board.suggestion();
-  console.log(problems);
+  console.log(board.suggestion_string());
   //console.log(problems.BadNeigborPairs[0]);
 
   expect(problems.length == 4);

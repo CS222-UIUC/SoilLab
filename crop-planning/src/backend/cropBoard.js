@@ -79,7 +79,50 @@ class CropBoard {
         }
         this.crop_type_number = 0;
         this.crop_dict = {};
+        this.crops = {};
         console.log("crop board cleared");
+    }
+
+    suggestion_string() {
+        let problems = this.suggestion();
+        let problems_string = "";
+
+        if (problems.Temperature.length > 0) {
+            let temp_str = "These crops cannot grow well in the current temperature:\n";
+            for (let i = 0; i < problems.Temperature.length; i++) {
+                temp_str += problems.Temperature[i].name + " at (" + problems.Temperature[i].xcoord.toString() 
+                    + "," + problems.Temperature[i].ycoord.toString() + ")\n";
+            }
+            problems_string += temp_str;
+        } else {
+            problems_string += "No problems detected for temperature!\n";
+        }
+
+        if (problems.Irrigation.length > 0) {
+            let irri_str = "These crops cannot grow well in the current amount of precipitation:\n";
+            for (let i = 0; i < problems.Irrigation.length; i++) {
+                irri_str += problems.Irrigation[i].name + " at (" + problems.Irrigation[i].xcoord.toString() 
+                    + "," + problems.Irrigation[i].ycoord.toString() + ")\n";
+            }
+            problems_string += irri_str;
+        } else {
+            problems_string += "No problems detected for irrigation!\n";
+        }
+
+        if (problems.BadNeigborPairs.length > 0) {
+            let adj_str = "These crops shouldn't be grown together:\n";
+            for (let i = 0; i < problems.Irrigation.length; i++) {
+                adj_str += problems.Irrigation[i][0].name + " at (" + problems.Irrigation[i][0].xcoord.toString() 
+                    + "," + problems.Irrigation[i][0].ycoord.toString() + ") and " + problems.Irrigation[i][1].name 
+                    + " at (" + problems.Irrigation[i][1].xcoord.toString() + "," + 
+                    problems.Irrigation[i][1].ycoord.toString() + ")\n";
+            }
+            problems_string += adj_str;
+        } else {
+            problems_string += "No problems detected for adjacent crops!\n";
+        }
+
+        return problems_string;
     }
 
     suggestion() {

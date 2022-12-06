@@ -2,12 +2,14 @@ import GridLayout from "react-grid-layout";
 import styled from "styled-components";
 import {useState} from 'react';
 import { Formik, Form, useField } from 'formik';
+import { CropBoard } from "../backend/cropBoard";
+import { CropModels } from '../backend/cropModelLibrary';
 
 const layout = [
     { i: "Carrot", x: 0, y: 0, w: 1, h: 1 },
     { i: "Corn", x: 1, y: 0, w: 1, h: 1 },
     { i: "Soybean", x: 2, y: 0, w: 1, h: 1 },
-    { i: "Cabbage", x: 0, y: 0, w: 1, h: 1 },
+    { i: "Lettuce", x: 0, y: 0, w: 1, h: 1 },
     { i: "Rice", x: 1, y: 1, w: 1, h: 1 }
   ];
   
@@ -45,67 +47,73 @@ export const Grid = () => {
       setIsHovering(false);
     };
 
-    function addCrop() {
-      var canvas = document.querySelector("GridCanvas");
-      var ctx = canvas.getContext("2d");
-      console.log(canvas);
-      ctx.fillStyle = 'red';
-      ctx.fillRect(10,10,200,200);  
-    }
+    let cropBoard = new CropBoard(600,600);
+    let currCropModel = null;
+    let cropColor = { "Carrot": "orange", "Corn": "yellow", "Soybean": "red", "Lettuce": "green", "Rice": "brown"};
 
     return (
       <Root>
         <GridLayout layout={layout} cols={3} rows={3} rowHeight={120} width={360}>
           <GridItemWrapper key="Carrot" data-testid="Carrot">
-            <div>
+            <div color="red">
               <div onMouseOver={handleMouseOver} onMouseOut={handleMouseOut}>Carrot</div>
               {!isHovering && <img src="https://static.thenounproject.com/attribution/1211981-600.png" alt = "carrot" width="95" height="95"/>}
-              {isHovering && <h2>This vegetable is orange.</h2>}
+              {isHovering && <h2>This crop is orange in the grid.</h2>}
             </div>
           </GridItemWrapper>
           <GridItemWrapper key="Corn" data-testid="Corn">
             <div>
               <div onMouseOver={handleMouseOver} onMouseOut={handleMouseOut}>Corn</div>
               {!isHovering && <img src="https://static.thenounproject.com/attribution/1197411-600.png" alt = "corn" width="95" height="95"/>}
-              {isHovering && <h2>This vegetable is yellow (usually).</h2>}
+              {isHovering && <h2>This crop is yellow in the grid.</h2>}
             </div>
           </GridItemWrapper>
           <GridItemWrapper key="Soybean" data-testid="Soybean">
             <div>
               <div onMouseOver={handleMouseOver} onMouseOut={handleMouseOut}>Soybean</div>
               {!isHovering && <img src="https://static.thenounproject.com/attribution/5164867-600.png" alt = "soybean" width="95" height="95"/>}
-              {isHovering && <h2>I have no clue what color this legume is. Tan?</h2>}
+              {isHovering && <h2>This crop is red in the grid.</h2>}
             </div>
           </GridItemWrapper>
-          <GridItemWrapper key="Cabbage" data-testid="Cabbage">
+          <GridItemWrapper key="Lettuce" data-testid="Lettuce">
             <div>
-              <div onMouseOver={handleMouseOver} onMouseOut={handleMouseOut}>Cabbage</div>
-              {!isHovering && <img src="https://static.thenounproject.com/attribution/1482111-600.png" alt = "cabbage" width="95" height="95"/>}
-              {isHovering && <h2>This vegetable is green.</h2>}
+              <div onMouseOver={handleMouseOver} onMouseOut={handleMouseOut}>Lettuce</div>
+              {!isHovering && <img src="https://static.thenounproject.com/attribution/1482111-600.png" alt = "lettuce" width="95" height="95"/>}
+              {isHovering && <h2>This crop is green in the grid.</h2>}
             </div>
           </GridItemWrapper>
           <GridItemWrapper key = "Rice" data-testid="Rice">
             <div>
               <div onMouseOver={handleMouseOver} onMouseOut={handleMouseOut}>Rice</div>
               {!isHovering && <img src="https://static.thenounproject.com/attribution/56585-600.png" alt = "rice" width="95" height="95"/>}
-              {isHovering && <h2>This grain is brown.</h2>}
+              {isHovering && <h2>This crop is brown in the grid.</h2>}
             </div>
           </GridItemWrapper>
         </GridLayout>
 
         <canvas id="GridCanvas" width="600" height="600" onClick={() => {
             
-            var canvas = document.getElementById("GridCanvas");
-            var ctx = canvas.getContext("2d");
-            var rect = canvas.getBoundingClientRect();
+            if (currCropModel != null) {
+              var canvas = document.getElementById("GridCanvas");
+              var ctx = canvas.getContext("2d");
+              var rect = canvas.getBoundingClientRect();
 
-            var e = window.event;
+              var e = window.event;
 
-            var x = e.clientX - (rect.left);
-            var y = e.clientY - (rect.top);
+              var x = e.clientX - (rect.left);
+              var y = e.clientY - (rect.top);
 
-            ctx.fillStyle = 'red';
-            ctx.fillRect(x,y,10,10);
+              let crop = currCropModel;
+              var add_success = cropBoard.add_crop(crop, x, y);
+
+              if (add_success) {
+                ctx.fillStyle = cropColor[crop.name];
+                ctx.fillRect(x - crop.attributes.radius - 1, y - crop.attributes.radius - 1, 2 * crop.attributes.radius + 1, 2 * crop.attributes.radius + 1);
+              } else {
+                // console.log("adding crop failed!");
+                alert("adding crop failed!");
+              }
+            }
 
           }}>
         </canvas>
@@ -122,23 +130,49 @@ export const Grid = () => {
 
           onSubmit={(values, { setSubmitting }) => {
             setTimeout(() => {
-              alert(JSON.stringify(values, null, 2));
+
+              if (values["crop"] === "Corn") {
+                currCropModel = CropModels.Corn;
+              } else if (values["crop"] === "Lettuce") {
+                currCropModel = CropModels.Lettuce;
+              } else if (values["crop"] === "Rice") {
+                currCropModel = CropModels.Rice;
+              } else if (values["crop"] === "Soybean") {
+                currCropModel = CropModels.Soybean;
+              } else if (values["crop"] === "Carrot") {
+                currCropModel = CropModels.Carrot;
+              } else {
+                currCropModel = null;
+              }
+
+              alert(JSON.stringify(currCropModel, null, 2));
+              // alert(cropBoard.suggestion_string());
               setSubmitting(false);
             }, 400);
           }}
+
 
         >
           <Form method="POST">
             <MySelect label="Select Crop" name="crop">
               <option value="">Select a crop to put on the grid</option>
               <option value="Corn">Corn!</option>
-              <option value="Cabbage">Cabbage!</option>
+              <option value="Lettuce">Lettuce!</option>
               <option value="Rice">Rice!</option>
               <option value="Soybean">Soybean!</option>
               <option value="Carrot">Carrot!</option>
             </MySelect>
 
-            <button type="submit">Submit</button>
+            <button type="submit">Switch Crop</button>
+            <button type="button" onClick={() => {
+              alert(cropBoard.suggestion_string());
+            }} >Analyze</button>
+            <button type="button" onClick={() => {
+              const canvas = document.getElementById("GridCanvas");
+              const context = canvas.getContext('2d');
+              context.clearRect(0, 0, canvas.width, canvas.height);
+              cropBoard.clear();
+            }} >Clear Grid</button>
           </Form>
         </Formik>
 
