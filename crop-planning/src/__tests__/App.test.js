@@ -131,6 +131,16 @@ test('Page loads properly & shows correct landing screen', async() => {
   expect(headerElement).toBeInTheDocument();
 });
 
+// test('Renders crop dropdown and grid', async() => {
+//   render(<Grid/>)
+//   expect(screen.getByText("Select Crop")).toBeInTheDocument();
+
+//   const {container} = render(<Grid/>);
+//   const boxes = container.getElementsByClassName('grid-item');
+//   console.log(boxes.length);
+//   expect(boxes.length).toBe(110);
+// });
+
 // Not valid after merge
 test.skip('Page shows app description', async () => {
   await act( async () => render(<App/>));
@@ -161,4 +171,11 @@ test.skip('Shows bar with about link', async () => {
   render(<App/>);
   const headerElement = screen.getByText('About');
   expect(headerElement).toBeInTheDocument();
+});
+
+test('Check canvas', async() => {
+  await act( async () => render(<Grid/>));
+  
+  expect(GridCanvas).toBeInTheDocument();
+
 });
