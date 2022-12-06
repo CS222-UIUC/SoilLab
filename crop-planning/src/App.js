@@ -1,6 +1,5 @@
 import './App.css';
 import React from 'react';
-//import Sidebar from './components/sidebar';
 import Login from './pages/Login/Login';
 import Register from './pages/Register/Register';
 import Reset from './pages/Reset/Reset';
@@ -17,8 +16,8 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import Home from './pages/Home/Home';
 import Navbar from './components/Navbar/Navbar';
 import About from './pages/About/About';
-//import Sidebar from './components/Sidebar/Sidebar';
-import Sidebar from './components/sidebar';
+import Sidebar from './components/Sidebar/Sidebar';
+//import Sidebar from './components/sidebar';
 
 function App() {
   const [user, _loading, _error] = useAuthState(auth);
