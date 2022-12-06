@@ -25,7 +25,7 @@ test('renders cropModelBoard components', async () => {
   expect(screen.getByText('Carrot')).toBeInTheDocument();
   expect(screen.getByText('Corn')).toBeInTheDocument();
   expect(screen.getByText('Soybean')).toBeInTheDocument();
-  expect(screen.getByText('Cabbage')).toBeInTheDocument();
+  expect(screen.getByText('Lettuce')).toBeInTheDocument();
   expect(screen.getByText('Rice')).toBeInTheDocument();
 });
 
@@ -35,48 +35,48 @@ test('Renders entire responsive, draggable grid', async() => {
   expect(screen.getByText('Carrot')).toBeInTheDocument();
   expect(screen.getByText('Corn')).toBeInTheDocument();
   expect(screen.getByText('Soybean')).toBeInTheDocument();
-  expect(screen.getByText('Cabbage')).toBeInTheDocument();
+  expect(screen.getByText('Lettuce')).toBeInTheDocument();
   expect(screen.getByText('Rice')).toBeInTheDocument();
 });
 
 test('Check that hoverable information for each icon is not displayed until hover, and then displayed when hovered', async() => {
   await act( async () => render(<Grid/>));
   //await fireEvent.click(screen.getByText('Grid'));
-  const carrot = screen.queryByText('This vegetable is orange.');
+  const carrot = screen.queryByText('This crop is orange in the grid.');
   expect(carrot).not.toBeInTheDocument();
 
-  const corn = screen.queryByText('This vegetable is yellow (usually).');
+  const corn = screen.queryByText('This crop is yellow in the grid.');
   expect(corn).not.toBeInTheDocument();
 
-  const soybean = screen.queryByText('I have no clue what color this legume is. Tan?');
+  const soybean = screen.queryByText('This crop is red in the grid.');
   expect(soybean).not.toBeInTheDocument();
 
-  const cabbage = screen.queryByText('This vegetable is green.');
-  expect(cabbage).not.toBeInTheDocument();
+  const lettuce = screen.queryByText('This crop is green in the grid.');
+  expect(lettuce).not.toBeInTheDocument();
 
-  const rice = screen.queryByText('This grain is brown.');
+  const rice = screen.queryByText('This crop is brown in the grid.');
   expect(rice).not.toBeInTheDocument();
 
 
   fireEvent.mouseOver(screen.getByText('Carrot'));
   await waitFor(() => screen.getByTestId('Carrot'))
-  expect(screen.getByText('This vegetable is orange.')).toBeInTheDocument()
+  expect(screen.getByText('This crop is orange in the grid.')).toBeInTheDocument()
 
   fireEvent.mouseOver(screen.getByText('Corn'));
   await waitFor(() => screen.getByTestId('Corn'))
-  expect(screen.getByText('This vegetable is yellow (usually).')).toBeInTheDocument()
+  expect(screen.getByText('This crop is yellow in the grid.')).toBeInTheDocument()
 
   fireEvent.mouseOver(screen.getByText('Soybean'));
   await waitFor(() => screen.getByTestId('Soybean'))
-  expect(screen.getByText('I have no clue what color this legume is. Tan?')).toBeInTheDocument()
+  expect(screen.getByText('This crop is red in the grid.')).toBeInTheDocument()
 
-  fireEvent.mouseOver(screen.getByText('Cabbage'));
-  await waitFor(() => screen.getByTestId('Cabbage'))
-  expect(screen.getByText('This vegetable is green.')).toBeInTheDocument()
+  fireEvent.mouseOver(screen.getByText('Lettuce'));
+  await waitFor(() => screen.getByTestId('Lettuce'))
+  expect(screen.getByText('This crop is green in the grid.')).toBeInTheDocument()
 
   fireEvent.mouseOver(screen.getByText('Rice'));
   await waitFor(() => screen.getByTestId('Rice'))
-  expect(screen.getByText('This grain is brown.')).toBeInTheDocument()
+  expect(screen.getByText('This crop is brown in the grid.')).toBeInTheDocument()
 });
 
 test('Check that image is displayed for each icon before hovered over.', async() => {
@@ -91,8 +91,8 @@ test('Check that image is displayed for each icon before hovered over.', async()
   const soybean = screen.getByAltText('soybean');
   expect(soybean).toHaveAttribute('src', 'https://static.thenounproject.com/attribution/5164867-600.png');
 
-  const cabbage = screen.getByAltText('cabbage');
-  expect(cabbage).toHaveAttribute('src', 'https://static.thenounproject.com/attribution/1482111-600.png');
+  const lettuce = screen.getByAltText('lettuce');
+  expect(lettuce).toHaveAttribute('src', 'https://static.thenounproject.com/attribution/1482111-600.png');
 
   const rice = screen.getByAltText('rice');
   expect(rice).toHaveAttribute('src', 'https://static.thenounproject.com/attribution/56585-600.png');

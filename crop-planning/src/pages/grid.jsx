@@ -23,6 +23,8 @@ const Root = styled.div`
   margin: 16px;
 `;
 
+let suggestion_str = "";
+
 const MySelect = ({ label, ...props }) => {
   const [field, meta] = useField(props);
   return (
@@ -165,7 +167,8 @@ export const Grid = () => {
 
             <button type="submit">Switch Crop</button>
             <button type="button" onClick={() => {
-              alert(cropBoard.suggestion_string());
+              suggestion_str = cropBoard.suggestion_string();
+              alert(suggestion_str);
             }} >Analyze</button>
             <button type="button" onClick={() => {
               const canvas = document.getElementById("GridCanvas");
@@ -180,4 +183,8 @@ export const Grid = () => {
 
     );
   };
+
   export default Grid;
+  // export function get_suggestion() {
+  //   return suggestion_str;
+  // }
