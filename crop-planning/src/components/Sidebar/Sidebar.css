@@ -1,8 +1,12 @@
 .sidebar {
+    background-color:#0C486B;
+  }
+
+/* .sidebar {
     background-color: #A7DCA7;
     height: 80px;
     display: flex;
-    justify-content: start;
+    justify-content: flex-start;
     align-items: center;
 }
 
@@ -20,7 +24,7 @@
     justify-content: center;
     position: fixed;
     top: 0;
-    /* left: -100%; */
+    left: -100%;
     transition: 850ms;
 }
 
@@ -69,4 +73,4 @@
 
 span {
     margin-left: 16px;
-}
+} */
