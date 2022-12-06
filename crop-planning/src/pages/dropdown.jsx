@@ -97,7 +97,7 @@ function Dropdown() {
 
   // const API_endpoint = `https://api.openweathermap.org/data/2.5/weather?`;
 
-  // const API_key = `456f9a99a8bea190d9b9d369a400a84b`;
+  // const API_key = ``;
 
   // axios.get(`${API_endpoint}lat=${lat}&lon=${lng}&appid=${API_key}`)
   // .then((response) => {
