@@ -56,7 +56,7 @@ const MySelect = ({ label, ...props }) => {
 function Dropdown() {
   const [user, loading] = useAuthState(auth);
   const [name, setName] = useState("");
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   const fetchUserName = async () => {
     try {
       const q = query(collection(db, "users"), where("uid", "==", user?.uid));
@@ -71,7 +71,10 @@ function Dropdown() {
   };
   useEffect(() => {
     if (loading) return;
-    // if (!user) return navigate("/");
+    if (!user) {
+      alert("Please login or create an account.")
+      return navigate("/");
+    }
 
     fetchUserName();
   }, [user, loading]);
