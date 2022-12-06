@@ -87,6 +87,16 @@ let BlueberryAttributes = {
     BadNeighbors: ["Nightshade", "Brassica", "Melon", "Lettuce", "Collard Greens", "Herbs", "Bean", "Beet", "Pea"]
 } 
 
+let RiceAttributes = {
+    LowerTemperatureLimit: 50.0, UpperTemperatureLimit: 100.0,
+    LowerIrrigationLimit: 1.0, UpperIrrigationLimit: 2.0,
+    LowerSunLightHour: 6.0,
+    Radius: 10.0,
+	LowerSoilPH: 5.0, UpperSoilPH: 7.0, 
+    PlantFamily: "Oryzoideae",
+    BadNeighbors: []
+} 
+
 
 
 const CornModel = new CropModel("Corn", "Description", CornAttributes);
@@ -97,6 +107,7 @@ const PeaModel = new CropModel("Pea", "Description", PeaAttributes);
 const SoybeanModel = new CropModel("Soybean", "Description", SoybeanAttributes);
 const PotatoModel = new CropModel("Potato", "Description", PotatoAttributes);
 const BlueberryModel = new CropModel("Blueberry", "Description", BlueberryAttributes);
+const RiceModel = new CropModel("Rice", "Description", RiceAttributes);
 
 const CropModels = {
     Corn: CornModel,
@@ -104,9 +115,10 @@ const CropModels = {
     Carrot: CarrotModel,
     Lettuce: LettuceModel,
     Pea: PeaModel,
-    Soyeabean: SoybeanModel,
+    Soybean: SoybeanModel,
     Potato: PotatoModel,
-    Blueberry: BlueberryModel
+    Blueberry: BlueberryModel,
+    Rice: RiceModel
  }
 
 export {CropModels};
