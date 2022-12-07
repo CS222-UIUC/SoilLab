@@ -2,11 +2,11 @@ import React, { useEffect, useState } from "react";
 import "./Board/suggestionBoard.css"
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { suggestion_str } from "./grid";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth, db, logout } from "./firebase";
-import { query, collection, getDocs, where } from "firebase/firestore";
+import { query, collection, getDocs, where, doc} from "firebase/firestore";
 // import {ref,push, child} from "firebase/database";
-import { doc, setDoc} from "firebase/firestore"; 
 
 const SuggestionBoard = () => {
   const [showAnalysis, setShowAnalysis] = useState(false);
@@ -46,8 +46,10 @@ const SuggestionBoard = () => {
       {showAnalysis? <div className="text__analysis">
         <b><i>SoilLab analyzed your grid layout: </i></b><br/>
         <br/>
-        <b><font color="#3C8586">Carrot at (1,2)</font></b> and <b><font color="#3C8586">Corn at (2,3)</font></b> do not follow the recommended crop distance. <br/>
-        <br/>
+        <b color="#3C8586" id = "suggestion"> 
+        {suggestion_str}
+        </b> 
+        <br></br>
         For the selected season and environment, <b><font color="#3C8586">Rice</font></b> is not recommended.
         <br/>
         <br/>
@@ -55,7 +57,11 @@ const SuggestionBoard = () => {
         <div className="shadow">Don't agree with our suggestions? Give feedback <Link to="/form">here</Link>.</div>
       </div> : null}
 
-      {!showAnalysis? <button className="btn" onClick={() => setShowAnalysis(!showAnalysis)}>Show Analysis</button> : null}
+      {!showAnalysis? <button className="btn" onClick={() => {
+        setShowAnalysis(!showAnalysis);
+        // alert(document.getElementsByClassName("myP").innerHTML);
+        // = suggestion_str;
+      }}>Show Analysis</button> : null}
       {showAnalysis? <button className="btn" onClick={() => setShowAnalysis(!showAnalysis)}>Hide Analysis</button> : null}
       </div>
       </>

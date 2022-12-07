@@ -30,6 +30,8 @@ const Root = styled.div`
   margin: 16px;
 `;
 
+export let suggestion_str = "";
+
 const MySelect = ({ label, ...props }) => {
   const [user, loading] = useAuthState(auth);
   const [name, setName] = useState("");
@@ -202,7 +204,8 @@ export const Grid = () => {
 
             <button type="submit">Switch Crop</button>
             <button type="button" onClick={() => {
-              alert(cropBoard.suggestion_string());
+              suggestion_str = cropBoard.suggestion_string();
+              alert(suggestion_str);
             }} >Analyze</button>
             <button type="button" onClick={() => {
               const canvas = document.getElementById("GridCanvas");
@@ -216,4 +219,5 @@ export const Grid = () => {
       </Root>
     );
   };
+
   export default Grid;

@@ -8,7 +8,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import CropModelBoard from './pages/cropModelBoard';
 import SuggestionBoard from './pages/suggestionBoard';
 import Form from './pages/form';
-import Grid from './pages/grid';
+import { Grid } from './pages/grid';
 import Footer from './components/Footer/Footer';
 import Dropdown from './pages/dropdown';
 import { auth } from "./pages/firebase";
