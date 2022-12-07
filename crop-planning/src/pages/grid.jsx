@@ -1,9 +1,16 @@
+import { useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from 'react';
 import GridLayout from "react-grid-layout";
 import styled from "styled-components";
-import {useState} from 'react';
+// import {useState} from 'react';
 import { Formik, Form, useField } from 'formik';
 import { CropBoard } from "../backend/cropBoard";
 import { CropModels } from '../backend/cropModelLibrary';
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth, db, logout } from "./firebase";
+import { query, collection, getDocs, where } from "firebase/firestore";
+// import {ref,push, child} from "firebase/database";
+import { doc, setDoc} from "firebase/firestore"; 
 
 const layout = [
     { i: "Carrot", x: 0, y: 0, w: 1, h: 1 },
@@ -26,7 +33,31 @@ const Root = styled.div`
 export let suggestion_str = "";
 
 const MySelect = ({ label, ...props }) => {
+  const [user, loading] = useAuthState(auth);
+  const [name, setName] = useState("");
+  const navigate = useNavigate();
   const [field, meta] = useField(props);
+  const fetchUserName = async () => {
+    try {
+      const q = query(collection(db, "users"), where("uid", "==", user?.uid));
+      const doc = await getDocs(q);
+      const data = doc.docs[0].data();
+
+      setName(data.name);
+    } catch (err) {
+      console.error(err);
+      alert("An error occured while fetching user data");
+    }
+  };
+  useEffect(() => {
+    if (loading) return;
+    if (!user) {
+      alert("Please login or create an account.")
+      return navigate("/");
+    }
+
+    fetchUserName();
+  }, [user, loading]);
   return (
     <div>
       <label htmlFor={props.id || props.name}>{label}</label>
@@ -39,6 +70,7 @@ const MySelect = ({ label, ...props }) => {
 };
 
 export const Grid = () => {
+
     const [isHovering, setIsHovering] = useState(false);
   
     const handleMouseOver = () => {
@@ -55,6 +87,7 @@ export const Grid = () => {
 
     return (
       <Root>
+        <div style={{position: 'fixed', left: '230px', top: '100px'}}>
         <GridLayout layout={layout} cols={3} rows={3} rowHeight={120} width={360}>
           <GridItemWrapper key="Carrot" data-testid="Carrot">
             <div color="red">
@@ -93,6 +126,8 @@ export const Grid = () => {
           </GridItemWrapper>
         </GridLayout>
 
+        </div>
+
         <canvas id="GridCanvas" width="600" height="600" onClick={() => {
             
             if (currCropModel != null) {
@@ -123,6 +158,8 @@ export const Grid = () => {
         <br></br>
         <br></br>
         <br></br>
+
+        <div style={{position: 'fixed', left: '245px', bottom: '120px', right: '20px'}}>
 
         <Formik enableReinitialize
           initialValues={{
@@ -178,9 +215,8 @@ export const Grid = () => {
             }} >Clear Grid</button>
           </Form>
         </Formik>
-
+        </div>
       </Root>
-
     );
   };
 

@@ -60,8 +60,8 @@ function Register() {
           Register with Google
         </button>
 
-        <div className="text">
-          Already have an account? <Link to="/">Login</Link> now.
+        <div className="text__register">
+          Already have an account? <Link to="/Login">Login</Link> now.
         </div>
       </div>
     </div>

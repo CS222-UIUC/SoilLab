@@ -3,13 +3,11 @@ import { useNavigate } from "react-router-dom";
 import React, { useEffect, useState } from 'react';
 import { Formik, Form, useField } from 'formik';
 import { useAuthState } from "react-firebase-hooks/auth";
-import { auth, db, logout } from "./firebase";
+import { auth, db } from "./firebase";
 import { query, collection, getDocs, where } from "firebase/firestore";
 // import {ref,push, child} from "firebase/database";
 import { doc, setDoc} from "firebase/firestore"; 
 // import axios from 'axios';
-
-
 
 const MyTextInput = ({ label, ...props }) => {
   const [field, meta] = useField(props);
@@ -52,29 +50,38 @@ const MySelect = ({ label, ...props }) => {
   );
 };
 
-
+/* eslint-disable */
 function Dropdown() {
   const [user, loading] = useAuthState(auth);
-  const [name, setName] = useState("");
-  // const navigate = useNavigate();
-  const fetchUserName = async () => {
-    try {
-      const q = query(collection(db, "users"), where("uid", "==", user?.uid));
-      const doc = await getDocs(q);
-      const data = doc.docs[0].data();
+  const [setName] = useState("");
+  const navigate = useNavigate();
 
-      setName(data.name);
-    } catch (err) {
-      console.error(err);
-      alert("An error occured while fetching user data");
-    }
-  };
+
+  /* eslint-disable */
   useEffect(() => {
+    const fetchUserName = async () => {
+      try {
+        const q = query(collection(db, "users"), where("uid", "==", user?.uid));
+        const doc = await getDocs(q);
+        const data = doc.docs[0].data();
+  
+        setName(data.name);
+      } catch (err) {
+        console.error(err);
+        // alert("An error occured while fetching user data");
+      }
+    };
+
     if (loading) return;
-    // if (!user) return navigate("/");
+    if (!user) {
+      alert("Please login or create an account.")
+      return navigate("/");
+    }
 
     fetchUserName();
   }, [user, loading]);
+  /* eslint-enable */
+
   const getLocation = () => {
     if (!navigator.geolocation) {
       setStatus('Geolocation is not supported by your browser');
@@ -90,8 +97,8 @@ function Dropdown() {
     }
   }
 
-  const [lat, setLat] = useState(null);
-  const [lng, setLng] = useState(null);
+  const [setLat] = useState(null); // param: lat
+  const [setLng] = useState(null); // param: lng
   const [status, setStatus] = useState(null);
   // const [responseData, setResponseData] = useState({});
 
@@ -105,10 +112,10 @@ function Dropdown() {
   // })
 
   // const location_data = responseData.name + ", " + responseData.country;
-  const lat_long_data = lat + ", " + lng;
+  // const lat_long_data = lat + ", " + lng;
 
   return (
-    <div style={{color: 'white'}}>
+    <div style={{color: 'white', position: 'fixed', left: '275px', top: '150px'}}>
       <h1>Before you start planning...</h1>
       <h3>Please enter your information below so we can give you the best recommendations possible!</h3>
 
@@ -118,7 +125,7 @@ function Dropdown() {
       {lat && <p>Latitude: {lat}</p>}
       {lng && <p>Longitude: {lng}</p>} */}
 
-      <Formik enableReinitialize
+      <Formik enableReinitialize id="tempdata"
         initialValues={{
           location: '',
           temperature: '', // select
@@ -142,7 +149,7 @@ function Dropdown() {
             label="Location"
             name="location"
             type="text"
-            placeholder="Raleigh, USA"
+            placeholder="Anytown, USA"
             // value={lat_long_data}
             // value={location_data}
           />

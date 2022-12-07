@@ -11,7 +11,7 @@ import { doc, setDoc} from "firebase/firestore";
 function Form() {
     const [user, loading] = useAuthState(auth);
     const [name, setName] = useState("");
-    // const navigate = useNavigate();
+    const navigate = useNavigate();
     const fetchUserName = async () => {
       try {
         const q = query(collection(db, "users"), where("uid", "==", user?.uid));
@@ -26,8 +26,11 @@ function Form() {
     };
     useEffect(() => {
       if (loading) return;
-      // if (!user) return navigate("/");
-
+      if (!user) {
+        alert("Please login or create an account.")
+        return navigate("/");
+      }
+  
       fetchUserName();
     }, [user, loading]);
     const formik = useFormik({
@@ -46,7 +49,7 @@ function Form() {
     });
     
     return (
-      <div style={{color: 'white'}}>
+      <div style={{color: 'white', position: 'fixed', left: '275px', top: '130px'}}>
         <h1>Feedback Form</h1>
         <h3>Your feedback is important to us.</h3>
         <h4>Please leave any comments or concerns you may have in this form and we will get back to you as soon as possible!</h4>
