@@ -26,7 +26,7 @@ Backend:
 ## Development Team
 Anagha S. - Firebase data storage & app integration, user authentication, dashboard, EnvironmentModel library & implementation, UI styling
 
-Lily Z. - Suggestion functions, farm grid, Crop class, CropModel library & implementation, backend maintenance
+Lily Z. - Suggestion functionalities, farm grid, Crop class, CropBoard class, CropModel library & implementation, backend maintenance
 
 Trisha C. - Drag-and-drop icons, farm grid, feedback form, location/temperature dropdown form, form UI
 
