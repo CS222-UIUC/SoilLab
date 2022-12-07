@@ -31,16 +31,21 @@ body{
 
 .title{
     margin-top: -250px;
-    margin-left: 140px;
+    margin-left: 200px;
     position:absolute;
     width: 50%
 }
 
 .title h1{
     font-size: 5rem;
+    margin-left:125px;
     font-family: 'Inter', sans-serif;
     color: white;
 
+}
+
+p {
+    margin-left:125px;
 }
 
 .title span{
@@ -59,6 +64,10 @@ body{
     font-family: 'Inter', sans-serif;
     box-shadow: 1px 2px 10px white;
 
+}
+
+img {
+    border-radius: 20%;
 }
 
 /* ul {

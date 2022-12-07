@@ -85,7 +85,7 @@ export const Grid = () => {
 
     return (
       <Root>
-        <div style={{position: 'fixed', left: '180px', top: '100px'}}>
+        <div style={{position: 'fixed', left: '230px', top: '100px'}}>
         <GridLayout layout={layout} cols={3} rows={3} rowHeight={120} width={360}>
           <GridItemWrapper key="Carrot" data-testid="Carrot">
             <div color="red">
@@ -157,7 +157,7 @@ export const Grid = () => {
         <br></br>
         <br></br>
 
-        <div style={{position: 'fixed', left: '200px', bottom: '120px'}}>
+        <div style={{position: 'fixed', left: '245px', bottom: '120px', right: '20px'}}>
 
         <Formik enableReinitialize
           initialValues={{
