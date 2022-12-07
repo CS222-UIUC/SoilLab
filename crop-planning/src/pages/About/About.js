@@ -10,7 +10,7 @@ function About() {
         </div>
         <div className = "maindiv">
             <div className="outer">
-                <img src={imgout} alt=""
+                <img src={imgout} alt="Seedling in hand"
                 width = "300"
                 height="300"/>
             </div>

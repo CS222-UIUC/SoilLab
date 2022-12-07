@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
 
 .dashboard {
-  height: 100vh;
+  height: 75vh;
   width: 100vw;
   display: flex;
   align-items: center;
@@ -9,7 +9,7 @@
 }
 
 .block {
-  margin:0.5em;
+  margin:0.3em;
 }
 
 .dashboard__container {
@@ -78,9 +78,9 @@
   border-radius: 10px;
 }
 
-.text {
+.text__dash {
   font-family: 'Inter', sans-serif;
-  font-size: 15px;
+  font-size: 25px;
   font-weight: bold;
   color: #0C486B;
 }
