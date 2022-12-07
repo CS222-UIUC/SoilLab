@@ -18,11 +18,12 @@ Backend:
 
 ###### Refer to the presentation for more in-depth information.
 ## Installation
-1. Execute `cd crop-planning` to change directory to the crop planning folder.
-2. Run `npm install` to install Node.js.
-3. Run `npm install --save react @trendmicro/react-sidenav` to install dependencies to load the sidebar.
-4. To run the app, execute `npm start`. ​​This will run the app in development mode and the app can be viewed on http://localhost:3000 in any browser.
-5. To execute tests within the app, run `npm test`.
+1. Clone this repository.
+2. Execute `cd crop-planning` to change directory to the crop planning folder.
+3. Run `npm install` to install Node.js.
+4. Run `npm install --save react @trendmicro/react-sidenav` to install dependencies to load the sidebar.
+5. To run the app, execute `npm start`. ​​This will run the app in development mode and the app can be viewed on http://localhost:3000 in any browser.
+6. To execute tests within the app, run `npm test`.
 ## Development Team
 Anagha S. - Firebase data storage & app integration, user authentication, dashboard, EnvironmentModel library & implementation, UI styling
 
