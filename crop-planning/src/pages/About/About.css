@@ -59,7 +59,7 @@ body{
 
 } 
 
-img {
+.outer img {
     border-radius: 20%;
     display: flex;
     position:relative;
