@@ -1,5 +1,6 @@
-# :seedling: [SoilLab](https://docs.google.com/presentation/d/1yV6RGyYFzDldGatFKGZM_0RRbOfMpfLaAFe7VQAqMqE/edit?usp=sharing)
-###### [bit.ly/team-atla-cs222](https://bit.ly/team-atla-cs222) · developed by Team Atla, CS222 Fall 2022 Group 77
+# :seedling: SoilLab
+###### developed by Team Atla, CS222 Fall 2022 Group 77
+###### [Presentation Slides](https://bit.ly/team-atla-cs222) · [App Demo (YouTube)](https://www.youtube.com/watch?v=cA-NzZy-1nY) · [Presentation Video (YouTube)](https://youtu.be/CCxbg2uZWBI)
 - - - 
 ## Goal
 Simplify the seeding process for large-scale farming. 
