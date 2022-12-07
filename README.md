@@ -25,6 +25,9 @@ Backend:
 5. To execute tests within the app, run `npm test`.
 ## Development Team
 Anagha S. - Firebase data storage & app integration, user authentication, dashboard, EnvironmentModel library & implementation, UI styling
+
 Lily Z. - Suggestion functions, farm grid, Crop class, CropModel library & implementation, backend maintenance
+
 Trisha C. - Drag-and-drop icons, farm grid, feedback form, location/temperature dropdown form, form UI
+
 Anjana G. - Web app UI: Navigation bar, sidebar, footer, page layouts, styling. CropModel library population & implementation
