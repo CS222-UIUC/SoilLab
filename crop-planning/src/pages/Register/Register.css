@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+
+.register {
+  height: 75vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.register__container {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  padding: 30px;
+  background-color: #CFF09E;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -o-border-radius: 10px;
+  -ms-border-radius: 10px;
+  border-radius: 10px;
+}
+
+.register__textBox {
+  padding: 10px;
+  font-size: 18px;
+  font-family: 'Inter', sans-serif;
+  margin-bottom: 10px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -o-border-radius: 10px;
+  -ms-border-radius: 10px;
+  border-radius: 10px;
+}
+
+.register__btn {
+  padding: 10px;
+  font-size: 18px;
+  font-family: 'Inter', sans-serif;
+  margin-bottom: 10px;
+  border: none;
+  color: white;
+  background-color: black;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -o-border-radius: 10px;
+  -ms-border-radius: 10px;
+  border-radius: 10px;
+}
+
+.register__google {
+  background-color: #3C8586;
+}
+
+.register div {
+  margin-top: 7px;
+}
+
+.text__register {
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  align-items: center;
+  color: #0C486B;
+}
