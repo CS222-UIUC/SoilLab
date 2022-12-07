@@ -21,7 +21,7 @@ Help farmers who may not have access to many resources improve their crop yields
 <img width="400" alt="backend" src="https://user-images.githubusercontent.com/90294056/206100714-79a3bb58-87e7-49a2-88dd-5f443b1b767d.png">
 <img width="400" alt="cropboard" src="https://user-images.githubusercontent.com/90294056/206100832-b1e70a6f-b02c-42a4-953b-4a1caafee381.png">
 
-###### Refer to the presentation for more in-depth information.
+###### Please refer to the presentation slides linked above for more in-depth information.
 ## Installation
 1. Clone this repository.
 2. Execute `cd crop-planning` to change directory to the crop planning folder.
