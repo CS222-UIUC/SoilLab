@@ -37,6 +37,7 @@ const SuggestionBoard = () => {
   
     return (
       <>
+      <div style={{position: 'fixed', left: '150px', top: '100px'}}>
       {!showAnalysis? 
       <div className="text">
       Analyze your grid layout!
@@ -56,7 +57,7 @@ const SuggestionBoard = () => {
 
       {!showAnalysis? <button className="btn" onClick={() => setShowAnalysis(!showAnalysis)}>Show Analysis</button> : null}
       {showAnalysis? <button className="btn" onClick={() => setShowAnalysis(!showAnalysis)}>Hide Analysis</button> : null}
-      
+      </div>
       </>
     );
   }

@@ -49,7 +49,7 @@ function Form() {
     });
     
     return (
-      <div style={{color: 'white'}}>
+      <div style={{color: 'white', position: 'fixed', left: '150px', top: '130px'}}>
         <h1>Feedback Form</h1>
         <h3>Your feedback is important to us.</h3>
         <h4>Please leave any comments or concerns you may have in this form and we will get back to you as soon as possible!</h4>

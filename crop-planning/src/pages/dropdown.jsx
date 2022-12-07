@@ -9,8 +9,6 @@ import { query, collection, getDocs, where } from "firebase/firestore";
 import { doc, setDoc} from "firebase/firestore"; 
 // import axios from 'axios';
 
-
-
 const MyTextInput = ({ label, ...props }) => {
   const [field, meta] = useField(props);
   return (
@@ -111,7 +109,7 @@ function Dropdown() {
   const lat_long_data = lat + ", " + lng;
 
   return (
-    <div style={{color: 'white'}}>
+    <div style={{color: 'white', position: 'fixed', left: '150px', top: '150px'}}>
       <h1>Before you start planning...</h1>
       <h3>Please enter your information below so we can give you the best recommendations possible!</h3>
 
@@ -121,7 +119,7 @@ function Dropdown() {
       {lat && <p>Latitude: {lat}</p>}
       {lng && <p>Longitude: {lng}</p>} */}
 
-      <Formik enableReinitialize
+      <Formik enableReinitialize id="tempdata"
         initialValues={{
           location: '',
           temperature: '', // select
