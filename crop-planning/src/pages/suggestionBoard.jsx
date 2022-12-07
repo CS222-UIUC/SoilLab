@@ -1,9 +1,7 @@
 import React, { useState } from "react";
 import "./Board/suggestionBoard.css"
 import { Link } from "react-router-dom";
-import { get_suggestion } from "./grid";
-
-// let suggestion_str = "NNN";
+import { suggestion_str } from "./grid";
 
 const SuggestionBoard = () => {
     const [showAnalysis, setShowAnalysis] = useState(false);
@@ -22,7 +20,10 @@ const SuggestionBoard = () => {
       {showAnalysis? <div className="text__analysis">
         <b><i>SoilLab analyzed your grid layout: </i></b><br/>
         <br/>
-        <b><font color="#3C8586">Carrot at (1,2)</font></b> and <b><font color="#3C8586">Corn at (2,3)</font></b> do not follow the recommended crop distance. <br/>
+        <b color="#3C8586" id = "suggestion"> 
+        {suggestion_str}
+        </b> 
+        <br></br>
         For the selected season and environment, <b><font color="#3C8586">Rice</font></b> is not recommended.
         <br/>
         <br/>
@@ -32,6 +33,8 @@ const SuggestionBoard = () => {
 
       {!showAnalysis? <button className="btn" onClick={() => {
         setShowAnalysis(!showAnalysis);
+        // alert(document.getElementsByClassName("myP").innerHTML);
+        // = suggestion_str;
       }}>Show Analysis</button> : null}
       {showAnalysis? <button className="btn" onClick={() => setShowAnalysis(!showAnalysis)}>Hide Analysis</button> : null}
       

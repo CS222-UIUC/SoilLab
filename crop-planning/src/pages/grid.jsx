@@ -23,7 +23,7 @@ const Root = styled.div`
   margin: 16px;
 `;
 
-let suggestion_str = "";
+export let suggestion_str = "";
 
 const MySelect = ({ label, ...props }) => {
   const [field, meta] = useField(props);

@@ -35,6 +35,10 @@ class Crop extends CropModel {
     get_name() {
         return this.name;
     }
+
+    to_string() {
+        return this.name + " at (" + this.xcoord.toString() + "," + this.ycoord.toString() + ")";
+    }
 }
 
 export {Crop};

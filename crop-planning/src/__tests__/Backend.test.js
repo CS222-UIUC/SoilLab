@@ -141,9 +141,18 @@ test('test CropBoard suggestion', () => {
   //   irrigation: 3,
   //   sunlightHour: [6, 10]
   // };
+  console.log(board.suggestion_string());
+
+  // let xstr = JSON.stringify(board);
+  // let new_board_attr = JSON.parse(xstr);
+  // let new_board = new CropBoard(new_board_attr.width, new_board_attr.height);
+  // new_board.board = new_board_attr.board;
+  // new_board.crop_dict = new_board_attr.crop_dict;
+  // new_board.crops = new_board_attr.crops;
+  // new_board.crop_type_number = new_board_attr.crop_type_number;
+  // new_board.environment = new_board_attr.environment;
 
   let problems = board.suggestion();
-  console.log(board.suggestion_string());
   //console.log(problems.BadNeigborPairs[0]);
 
   expect(problems.length == 4);
