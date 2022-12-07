@@ -85,6 +85,7 @@ export const Grid = () => {
 
     return (
       <Root>
+        <div style={{position: 'fixed', left: '180px', top: '100px'}}>
         <GridLayout layout={layout} cols={3} rows={3} rowHeight={120} width={360}>
           <GridItemWrapper key="Carrot" data-testid="Carrot">
             <div color="red">
@@ -123,6 +124,8 @@ export const Grid = () => {
           </GridItemWrapper>
         </GridLayout>
 
+        </div>
+
         <canvas id="GridCanvas" width="600" height="600" onClick={() => {
             
             if (currCropModel != null) {
@@ -153,6 +156,8 @@ export const Grid = () => {
         <br></br>
         <br></br>
         <br></br>
+
+        <div style={{position: 'fixed', left: '200px', bottom: '120px'}}>
 
         <Formik enableReinitialize
           initialValues={{
@@ -207,9 +212,8 @@ export const Grid = () => {
             }} >Clear Grid</button>
           </Form>
         </Formik>
-
+        </div>
       </Root>
-
     );
   };
   export default Grid;
